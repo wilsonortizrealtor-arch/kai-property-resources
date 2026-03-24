@@ -7,23 +7,19 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0f0f; color: #e0e0e0; min-height: 100vh; }
-  
   header { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid #2a2a4a; }
   header h1 { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
   header p { color: #a0a8c0; margin-top: 8px; font-size: 1rem; }
   .badge { display: inline-block; background: #e94560; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; letter-spacing: 1px; }
-
-  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
-
-  .section { margin-bottom: 40px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  .section { margin-bottom: 44px; }
   .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #2a2a3a; }
   .section-icon { font-size: 1.6rem; }
   .section-title { font-size: 1.25rem; font-weight: 700; color: #fff; }
   .section-desc { font-size: 0.85rem; color: #7a82a0; margin-top: 2px; }
-
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .card { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s; cursor: pointer; }
-  .card:hover { background: #22223a; border-color: #4a4a7a; transform: translateY(-2px); }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+  .card { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s; }
+  .card:hover { background: #22223a; border-color: #4a4a7a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   .card-emoji { font-size: 1.4rem; }
   .card-title { font-size: 0.95rem; font-weight: 600; color: #d0d8ff; line-height: 1.3; }
   .card-desc { font-size: 0.8rem; color: #6a7090; line-height: 1.4; }
@@ -31,42 +27,41 @@
   .card-tag.red { background: #3a1a2a; color: #d06080; }
   .card-tag.green { background: #1a3a2a; color: #60c080; }
   .card-tag.purple { background: #2a1a3a; color: #a060d0; }
-
+  .card-tag.yellow { background: #3a3010; color: #d0b040; }
   .search-bar { background: #1a1a2a; border: 1px solid #2a2a4a; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
   .search-bar input { background: none; border: none; outline: none; color: #e0e0e0; font-size: 0.95rem; flex: 1; }
   .search-bar input::placeholder { color: #4a4a6a; }
-  .search-icon { color: #4a4a6a; font-size: 1.1rem; }
-
-  .ask-bar { background: linear-gradient(135deg, #1a2a1a, #1a1a2e); border: 1px solid #3a5a3a; border-radius: 12px; padding: 24px; margin-top: 40px; text-align: center; }
-  .ask-bar h3 { color: #80d080; font-size: 1.1rem; margin-bottom: 8px; }
-  .ask-bar p { color: #6a8a6a; font-size: 0.85rem; }
-
+  .hidden { display: none !important; }
+  .no-results { color: #4a4a6a; text-align: center; padding: 24px; font-size: 0.9rem; display: none; }
   .audio-item { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px; margin-bottom: 10px; text-decoration: none; color: inherit; transition: all 0.2s; }
-  .audio-item:hover { background: #22223a; border-color: #4a4a7a; }
+  .audio-item:hover { background: #22223a; border-color: #4a4a7a; transform: translateY(-1px); }
   .audio-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
   .audio-title { font-size: 0.95rem; font-weight: 600; color: #d0d8ff; }
   .audio-desc { font-size: 0.8rem; color: #6a7090; margin-top: 4px; line-height: 1.4; }
   .audio-tag { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: #2a1a3a; color: #c080e0; display: inline-block; margin-top: 6px; }
-
+  .ask-bar { background: linear-gradient(135deg, #1a2a1a, #1a1a2e); border: 1px solid #3a5a3a; border-radius: 12px; padding: 24px; margin-top: 40px; text-align: center; }
+  .ask-bar h3 { color: #80d080; font-size: 1.1rem; margin-bottom: 8px; }
+  .ask-bar p { color: #6a8a6a; font-size: 0.85rem; }
   footer { text-align: center; padding: 24px; color: #3a3a5a; font-size: 0.8rem; border-top: 1px solid #1a1a2a; margin-top: 20px; }
+  .count-badge { font-size: 0.75rem; background: #2a2a4a; color: #8080c0; padding: 2px 10px; border-radius: 20px; margin-left: 8px; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🏢 Kai Property Manager <span class="badge">RESOURCE HUB</span></h1>
-  <p>All knowledge, forms, and audio — organized and searchable</p>
+  <p>Complete library from MrLandlord.com — organized, searchable, downloadable</p>
 </header>
 
 <div class="container">
 
-  <!-- SECTION 1: CORE GUIDES -->
+  <!-- CORE GUIDES -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">📚</span>
       <div>
-        <div class="section-title">Core Property Management Guides</div>
-        <div class="section-desc">Complete library from Jeffrey Taylor / MrLandlord.com</div>
+        <div class="section-title">Core Guides</div>
+        <div class="section-desc">Download the complete books</div>
       </div>
     </div>
     <div class="card-grid">
@@ -74,272 +69,542 @@
         <span class="card-emoji">📖</span>
         <div class="card-title">Landlord Handbook — 220+ Rental Forms</div>
         <div class="card-desc">Complete 11th edition covering every stage of the rental cycle from screening to move-out</div>
-        <span class="card-tag">PDF • Download</span>
+        <span class="card-tag">Full PDF • 247 pages</span>
       </a>
       <a class="card" href="recordkeeper.pdf" target="_blank">
         <span class="card-emoji">📊</span>
         <div class="card-title">Rental Property RecordKeeper</div>
         <div class="card-desc">50 recordkeeping forms for properties, tenants, maintenance, income, and expenses</div>
-        <span class="card-tag">PDF • Download</span>
+        <span class="card-tag">Full PDF • Download</span>
       </a>
       <a class="card" href="collectors_series.pdf" target="_blank">
         <span class="card-emoji">🎯</span>
         <div class="card-title">Mr. Landlord Collector's Series</div>
         <div class="card-desc">Advanced strategies for experienced landlords — forms 10 through 20</div>
-        <span class="card-tag">PDF • Download</span>
+        <span class="card-tag">Full PDF • Download</span>
       </a>
     </div>
   </div>
 
-  <!-- SECTION 2: FORMS LIBRARY -->
+  <!-- FORMS LIBRARY -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">📋</span>
       <div>
-        <div class="section-title">Forms Library — Searchable</div>
-        <div class="section-desc">220+ individual forms by category</div>
+        <div class="section-title">Forms Library <span class="count-badge" id="formCount">50 forms</span></div>
+        <div class="section-desc">Click any form to open it directly — each link goes to the exact page</div>
       </div>
     </div>
     <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="formSearch" placeholder="Search forms... (e.g. 'late fee', 'pet', 'eviction')" oninput="filterForms()">
+      <span>🔍</span>
+      <input type="text" id="formSearch" placeholder="Search forms... (e.g. 'late fee', 'pet', 'eviction', 'move-out')" oninput="filterForms()">
     </div>
+    <div class="no-results" id="noResults">No forms match your search. Try a different keyword.</div>
     <div class="card-grid" id="formsGrid">
-      <!-- Chapter 1: Tenant Screening -->
-      <a class="card" href="landlord_handbook.pdf#page=1" target="_blank">
+
+      <!-- SCREENING -->
+      <a class="card" href="landlord_handbook.pdf#page=5" target="_blank">
         <span class="card-emoji">📞</span>
-        <div class="card-title">Phone Qualifying Worksheet</div>
+        <div class="card-title">Rental Availability Hot Sheet</div>
+        <div class="card-desc">Marketing sheet for prospective residents listing property details and availability</div>
+        <span class="card-tag">Screening • Page 1</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=6" target="_blank">
+        <span class="card-emoji">📞</span>
+        <div class="card-title">Phone Qualifying Worksheet / Script</div>
         <div class="card-desc">Pre-screen applicants over the phone before showing the property</div>
-        <span class="card-tag blue">Chapter 1 • Screening</span>
+        <span class="card-tag">Screening • Page 2</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=1" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=7" target="_blank">
+        <span class="card-emoji">📋</span>
+        <div class="card-title">Phone Summary / Quick Survey</div>
+        <div class="card-desc">Quick summary form to document phone conversations with prospective tenants</div>
+        <span class="card-tag">Screening • Page 3</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=8" target="_blank">
+        <span class="card-emoji">🗓️</span>
+        <div class="card-title">Open House Appointment Schedule</div>
+        <div class="card-desc">Group showing appointment scheduler to maximize showing efficiency</div>
+        <span class="card-tag">Screening • Page 4</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=10" target="_blank">
+        <span class="card-emoji">🏠</span>
+        <div class="card-title">House For Rent Descriptive Handout</div>
+        <div class="card-desc">Property description handout to give to prospective renters at showings</div>
+        <span class="card-tag">Screening • Page 6</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=17" target="_blank">
         <span class="card-emoji">📝</span>
-        <div class="card-title">Rental Application</div>
-        <div class="card-desc">Comprehensive application including future homebuyer option</div>
-        <span class="card-tag blue">Chapter 1 • Screening</span>
+        <div class="card-title">Rental Application / Future Homebuyer</div>
+        <div class="card-desc">Comprehensive rental application including future homebuyer option — pages 13–14</div>
+        <span class="card-tag">Screening • Page 13</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=1" target="_blank">
-        <span class="card-emoji">🐾</span>
-        <div class="card-title">Pet Application & New Pet Checklist</div>
-        <div class="card-desc">Screen pet owners and document pet approval conditions</div>
-        <span class="card-tag blue">Chapter 1 • Screening</span>
+      <a class="card" href="landlord_handbook.pdf#page=19" target="_blank">
+        <span class="card-emoji">✍️</span>
+        <div class="card-title">Application Addendum — Acceptance of Terms</div>
+        <div class="card-desc">Supplemental addendum for applicants to accept rental terms and conditions</div>
+        <span class="card-tag">Screening • Page 15</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=1" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=20" target="_blank">
+        <span class="card-emoji">🏢</span>
+        <div class="card-title">Corporate Housing Rental Application</div>
+        <div class="card-desc">Specialized application for corporate tenants and business housing arrangements</div>
+        <span class="card-tag">Screening • Page 16</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=23" target="_blank">
         <span class="card-emoji">✅</span>
-        <div class="card-title">Approval / Non-Acceptance Notice</div>
-        <div class="card-desc">Notify applicants of approval or denial with proper documentation</div>
-        <span class="card-tag blue">Chapter 1 • Screening</span>
+        <div class="card-title">New Tenant Checklist</div>
+        <div class="card-desc">Step-by-step checklist for onboarding and approving new tenants</div>
+        <span class="card-tag">Screening • Page 19</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=1" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=24" target="_blank">
+        <span class="card-emoji">❌</span>
+        <div class="card-title">Non-Acceptance Checklist for New Residents</div>
+        <div class="card-desc">Document reasons for denying an application — protects against fair housing claims</div>
+        <span class="card-tag">Screening • Page 20</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=25" target="_blank">
+        <span class="card-emoji">🐾</span>
+        <div class="card-title">Pet Application / Registration Form</div>
+        <div class="card-desc">Screen pet owners and register approved pets with full documentation</div>
+        <span class="card-tag">Screening • Page 21</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=26" target="_blank">
+        <span class="card-emoji">🐕</span>
+        <div class="card-title">New Pet Checklist — Qualified Applicants</div>
+        <div class="card-desc">Identify and screen qualified dog-owning applicants; includes dangerous breed list</div>
+        <span class="card-tag">Screening • Page 22</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=28" target="_blank">
+        <span class="card-emoji">♿</span>
+        <div class="card-title">Assistance Animal Application Process</div>
+        <div class="card-desc">Proper form for ESA / service animal requests — fair housing compliant</div>
+        <span class="card-tag">Screening • Page 24</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=31" target="_blank">
+        <span class="card-emoji">💼</span>
+        <div class="card-title">Employment Verification Form</div>
+        <div class="card-desc">Verify applicant employment and income with their employer directly</div>
+        <span class="card-tag">Screening • Page 27</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=32" target="_blank">
+        <span class="card-emoji">☎️</span>
+        <div class="card-title">Phone Questions to Ask Former Landlord</div>
+        <div class="card-desc">Script for calling prior landlords — the questions that reveal problem tenants</div>
+        <span class="card-tag">Screening • Page 28</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=33" target="_blank">
         <span class="card-emoji">🔍</span>
         <div class="card-title">Landlord Verification Form</div>
-        <div class="card-desc">Questions to ask previous landlords when verifying rental history</div>
-        <span class="card-tag blue">Chapter 1 • Screening</span>
+        <div class="card-desc">Written verification form to send to previous landlords for documented rental history</div>
+        <span class="card-tag">Screening • Page 29</span>
       </a>
-      <!-- Chapter 2: Move-In -->
-      <a class="card" href="landlord_handbook.pdf#page=2" target="_blank">
-        <span class="card-emoji">🏠</span>
-        <div class="card-title">Standard Rental Agreement (Lease)</div>
-        <div class="card-desc">Full lease template with all standard clauses</div>
-        <span class="card-tag green">Chapter 2 • Move-In</span>
+      <a class="card" href="landlord_handbook.pdf#page=38" target="_blank">
+        <span class="card-emoji">✅</span>
+        <div class="card-title">Approval of Rental Application</div>
+        <div class="card-desc">Official approval notice for accepted applicants with next steps</div>
+        <span class="card-tag">Screening • Page 34</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=2" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=39" target="_blank">
+        <span class="card-emoji">💡</span>
+        <div class="card-title">Transfer Utilities Form</div>
+        <div class="card-desc">Guide new tenants to transfer utilities into their name before move-in</div>
+        <span class="card-tag">Screening • Page 35</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=40" target="_blank">
+        <span class="card-emoji">🤝</span>
+        <div class="card-title">Holding Deposit Receipt</div>
+        <div class="card-desc">Receipt when applicant places a deposit to hold the unit while being processed</div>
+        <span class="card-tag">Screening • Page 36</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=42" target="_blank">
+        <span class="card-emoji">🚫</span>
+        <div class="card-title">Rental Application — Not Approved</div>
+        <div class="card-desc">Denial notice with documented reasons — protects against discrimination claims</div>
+        <span class="card-tag">Screening • Page 38</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=45" target="_blank">
         <span class="card-emoji">🔑</span>
-        <div class="card-title">Move-In Checklist & Property Condition</div>
-        <div class="card-desc">Document property condition at move-in to protect security deposit</div>
-        <span class="card-tag green">Chapter 2 • Move-In</span>
+        <div class="card-title">Key Sign Out Form</div>
+        <div class="card-desc">Track every key issued to applicants, contractors, and tenants</div>
+        <span class="card-tag">Screening • Page 41</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=2" target="_blank">
+
+      <!-- LEASE / MOVE-IN -->
+      <a class="card" href="landlord_handbook.pdf#page=51" target="_blank">
+        <span class="card-emoji">📄</span>
+        <div class="card-title">Standard Residential Lease Agreement</div>
+        <div class="card-desc">Full lease template — includes bi-weekly payment plan and 66+ clauses covering all scenarios</div>
+        <span class="card-tag green">Lease • Page 47</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=61" target="_blank">
+        <span class="card-emoji">➕</span>
+        <div class="card-title">Sample Lease Clauses to Consider</div>
+        <div class="card-desc">Additional protective clauses to add to any lease — cover edge cases and common problems</div>
+        <span class="card-tag green">Lease • Page 57</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=64" target="_blank">
+        <span class="card-emoji">📏</span>
+        <div class="card-title">House Rules Addendum</div>
+        <div class="card-desc">34+ property rules covering noise, outdoor items, temperature, and more</div>
+        <span class="card-tag green">Lease • Page 60</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=69" target="_blank">
         <span class="card-emoji">💰</span>
         <div class="card-title">Security Deposit Addendum</div>
-        <div class="card-desc">Document deposit terms, conditions, and deduction policies</div>
-        <span class="card-tag green">Chapter 2 • Move-In</span>
+        <div class="card-desc">Document deposit terms, deduction policies, and conditions for full return</div>
+        <span class="card-tag green">Lease • Page 65</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=2" target="_blank">
-        <span class="card-emoji">🐕</span>
+      <a class="card" href="landlord_handbook.pdf#page=70" target="_blank">
+        <span class="card-emoji">🧾</span>
+        <div class="card-title">Receipt for First Month's Rent & Deposit</div>
+        <div class="card-desc">Official receipt when collecting move-in funds — creates a paper trail</div>
+        <span class="card-tag green">Lease • Page 66</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=72" target="_blank">
+        <span class="card-emoji">📸</span>
+        <div class="card-title">Property Condition Checklist</div>
+        <div class="card-desc">Document every room's condition at move-in — your defense at move-out for deposit deductions</div>
+        <span class="card-tag green">Move-In • Page 68</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=85" target="_blank">
+        <span class="card-emoji">🐾</span>
         <div class="card-title">Pet Addendum</div>
-        <div class="card-desc">Add pet terms to lease — fees, rules, liability</div>
-        <span class="card-tag green">Chapter 2 • Move-In</span>
+        <div class="card-desc">Add pet terms to any lease — fees, rules, damage liability, breed restrictions</div>
+        <span class="card-tag green">Lease • Page 81</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=2" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=88" target="_blank">
         <span class="card-emoji">🚗</span>
+        <div class="card-title">Garage / Storage Rental Agreement</div>
+        <div class="card-desc">Separate agreement for renting garage or storage space — additional income stream</div>
+        <span class="card-tag green">Lease • Page 84</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=90" target="_blank">
+        <span class="card-emoji">🅿️</span>
         <div class="card-title">Parking Agreement</div>
-        <div class="card-desc">Define parking rules, spaces, and violations</div>
-        <span class="card-tag green">Chapter 2 • Move-In</span>
+        <div class="card-desc">Define parking spaces, rules, unauthorized vehicle policy, and violations</div>
+        <span class="card-tag green">Lease • Page 86</span>
       </a>
-      <!-- Chapter 3: Rent Collection -->
-      <a class="card" href="landlord_handbook.pdf#page=3" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=91" target="_blank">
+        <span class="card-emoji">🚔</span>
+        <div class="card-title">Crime / Drug Free Addendum</div>
+        <div class="card-desc">Zero-tolerance clause for criminal activity — grounds for immediate lease termination</div>
+        <span class="card-tag green">Lease • Page 87</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=92" target="_blank">
+        <span class="card-emoji">🚭</span>
+        <div class="card-title">Smoke-Free Addendum</div>
+        <div class="card-desc">Non-smoking policy for the entire property including common areas</div>
+        <span class="card-tag green">Lease • Page 88</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=96" target="_blank">
+        <span class="card-emoji">💧</span>
+        <div class="card-title">Mold Addendum</div>
+        <div class="card-desc">Tenant responsibilities for preventing mold — limits landlord liability</div>
+        <span class="card-tag green">Lease • Page 92</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=102" target="_blank">
         <span class="card-emoji">⚠️</span>
-        <div class="card-title">Late Rent Warning / Late Fee Notice</div>
-        <div class="card-desc">First notice when rent is late — before formal action</div>
-        <span class="card-tag red">Chapter 3 • Rent</span>
+        <div class="card-title">Lead-Based Paint Disclosure</div>
+        <div class="card-desc">Federally required disclosure for homes built before 1978 — legally mandatory</div>
+        <span class="card-tag green">Lease • Page 98</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=3" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=105" target="_blank">
+        <span class="card-emoji">🔑</span>
+        <div class="card-title">Move-In Checklist</div>
+        <div class="card-desc">Room-by-room condition checklist completed with tenant at move-in</div>
+        <span class="card-tag green">Move-In • Page 101</span>
+      </a>
+
+      <!-- RENT COLLECTION -->
+      <a class="card" href="landlord_handbook.pdf#page=113" target="_blank">
+        <span class="card-emoji">⚠️</span>
+        <div class="card-title">Notice of Late Rent / Late Fee / Charges</div>
+        <div class="card-desc">First written notice when rent is overdue — trigger before formal legal action</div>
+        <span class="card-tag red">Rent • Page 109</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=114" target="_blank">
+        <span class="card-emoji">📢</span>
+        <div class="card-title">Notice of Strict Enforcement of Rental Policy</div>
+        <div class="card-desc">Formal warning that all policies will now be strictly enforced — resets tenant behavior</div>
+        <span class="card-tag red">Rent • Page 110</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=115" target="_blank">
+        <span class="card-emoji">🏦</span>
+        <div class="card-title">Returned Check Notice</div>
+        <div class="card-desc">Notice for bounced checks with returned check fee and future payment requirements</div>
+        <span class="card-tag red">Rent • Page 111</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=116" target="_blank">
         <span class="card-emoji">🚨</span>
         <div class="card-title">Notice to Pay Rent or Quit</div>
-        <div class="card-desc">Formal legal notice required before eviction filing</div>
-        <span class="card-tag red">Chapter 3 • Rent</span>
+        <div class="card-desc">Formal legal notice required before eviction filing — must be served correctly</div>
+        <span class="card-tag red">Rent • Page 112</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=3" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=118" target="_blank">
         <span class="card-emoji">🤝</span>
-        <div class="card-title">Promise for Payment / Promissory Note</div>
-        <div class="card-desc">Document when tenant promises to pay by a specific date</div>
-        <span class="card-tag red">Chapter 3 • Rent</span>
+        <div class="card-title">Promise for Payment</div>
+        <div class="card-desc">Document when a tenant verbally commits to a payment date — creates enforceable record</div>
+        <span class="card-tag red">Rent • Page 114</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=3" target="_blank">
-        <span class="card-emoji">🔔</span>
-        <div class="card-title">Noise / Pet / Parking Violation Notices</div>
-        <div class="card-desc">Written warnings for rule violations — creates paper trail</div>
-        <span class="card-tag red">Chapter 3 • Rent</span>
+      <a class="card" href="landlord_handbook.pdf#page=119" target="_blank">
+        <span class="card-emoji">📜</span>
+        <div class="card-title">Promissory Note</div>
+        <div class="card-desc">Legal promissory note for past-due rent — stronger than a promise form</div>
+        <span class="card-tag red">Rent • Page 115</span>
       </a>
-      <!-- Chapter 4: Maintenance -->
-      <a class="card" href="landlord_handbook.pdf#page=4" target="_blank">
-        <span class="card-emoji">🔧</span>
-        <div class="card-title">Maintenance Request & Work Order</div>
-        <div class="card-desc">Track tenant requests and document completed repairs</div>
-        <span class="card-tag purple">Chapter 4 • Maintenance</span>
+      <a class="card" href="landlord_handbook.pdf#page=121" target="_blank">
+        <span class="card-emoji">⚖️</span>
+        <div class="card-title">Notice to Perform or Quit</div>
+        <div class="card-desc">Notice for lease violations (non-payment or rule violations) — step before eviction</div>
+        <span class="card-tag red">Rent • Page 117</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=4" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=122" target="_blank">
         <span class="card-emoji">🏡</span>
+        <div class="card-title">Rental Upkeep Violation Notice</div>
+        <div class="card-desc">Written warning for property maintenance violations by the tenant</div>
+        <span class="card-tag red">Violations • Page 118</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=124" target="_blank">
+        <span class="card-emoji">🗑️</span>
+        <div class="card-title">Garbage Violation Notice</div>
+        <div class="card-desc">Notice for improper trash disposal — city code violation prevention</div>
+        <span class="card-tag red">Violations • Page 120</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=128" target="_blank">
+        <span class="card-emoji">🐈</span>
+        <div class="card-title">Pet Violation Notice</div>
+        <div class="card-desc">Notice for unauthorized pets or violations of the pet addendum</div>
+        <span class="card-tag red">Violations • Page 124</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=142" target="_blank">
+        <span class="card-emoji">🚗</span>
+        <div class="card-title">Parking Violation Warning Notice</div>
+        <div class="card-desc">Warning for unauthorized parking — windshield or door notice version</div>
+        <span class="card-tag red">Violations • Page 138</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=133" target="_blank">
+        <span class="card-emoji">💵</span>
+        <div class="card-title">Partial Payment Acceptance Form</div>
+        <div class="card-desc">Accept partial rent payments without waiving right to collect the balance</div>
+        <span class="card-tag red">Rent • Page 129</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=135" target="_blank">
+        <span class="card-emoji">🏛️</span>
+        <div class="card-title">Request for Judgment / Collection Letter</div>
+        <div class="card-desc">Post-eviction collection process forms — recover unpaid rent through courts</div>
+        <span class="card-tag red">Eviction • Page 131</span>
+      </a>
+
+      <!-- MAINTENANCE -->
+      <a class="card" href="landlord_handbook.pdf#page=153" target="_blank">
+        <span class="card-emoji">🔔</span>
+        <div class="card-title">Notice of Intent to Enter</div>
+        <div class="card-desc">Proper advance notice before entering tenant's unit — legally required in most states</div>
+        <span class="card-tag purple">Maintenance • Page 149</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=156" target="_blank">
+        <span class="card-emoji">🏠</span>
         <div class="card-title">Full Inspection Report</div>
-        <div class="card-desc">Comprehensive property inspection documentation</div>
-        <span class="card-tag purple">Chapter 4 • Maintenance</span>
+        <div class="card-desc">Comprehensive property inspection — room-by-room documentation for landlord records</div>
+        <span class="card-tag purple">Maintenance • Page 152</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=4" target="_blank">
-        <span class="card-emoji">📅</span>
+      <a class="card" href="landlord_handbook.pdf#page=158" target="_blank">
+        <span class="card-emoji">🌸</span>
         <div class="card-title">Spring / Summer / Winter Maintenance Checklists</div>
-        <div class="card-desc">Seasonal preventive maintenance schedules</div>
-        <span class="card-tag purple">Chapter 4 • Maintenance</span>
+        <div class="card-desc">Seasonal preventive maintenance schedules to avoid costly repairs</div>
+        <span class="card-tag purple">Maintenance • Page 154</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=4" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=162" target="_blank">
+        <span class="card-emoji">🔧</span>
+        <div class="card-title">Maintenance Request Form</div>
+        <div class="card-desc">Tenant-facing form to submit maintenance requests — documents all repair needs</div>
+        <span class="card-tag purple">Maintenance • Page 158</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=163" target="_blank">
+        <span class="card-emoji">📋</span>
+        <div class="card-title">Maintenance Request & Work Order</div>
+        <div class="card-desc">Combined request and work order — tracks requests, assignments, and completion</div>
+        <span class="card-tag purple">Maintenance • Page 159</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=166" target="_blank">
         <span class="card-emoji">🏢</span>
         <div class="card-title">Independent Contractor Agreement</div>
-        <div class="card-desc">Hire vendors and contractors with proper documentation</div>
-        <span class="card-tag purple">Chapter 4 • Maintenance</span>
+        <div class="card-desc">Hire vendors and contractors with proper documentation — defines scope and payment</div>
+        <span class="card-tag purple">Maintenance • Page 162</span>
       </a>
-      <!-- Chapter 5: Move-Out -->
-      <a class="card" href="landlord_handbook.pdf#page=5" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=171" target="_blank">
+        <span class="card-emoji">✔️</span>
+        <div class="card-title">Repair Completion Receipt</div>
+        <div class="card-desc">Document that repairs were completed and accepted by tenant</div>
+        <span class="card-tag purple">Maintenance • Page 167</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=185" target="_blank">
+        <span class="card-emoji">🏢</span>
+        <div class="card-title">Property Management Agreement</div>
+        <div class="card-desc">Agreement with a property management company — scope, fees, responsibilities</div>
+        <span class="card-tag purple">Management • Page 181</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=187" target="_blank">
+        <span class="card-emoji">💸</span>
+        <div class="card-title">Notice of Repair Charge</div>
+        <div class="card-desc">Charge tenants for repairs caused by their negligence or damage</div>
+        <span class="card-tag purple">Maintenance • Page 183</span>
+      </a>
+
+      <!-- RENEWAL / MOVE-OUT -->
+      <a class="card" href="landlord_handbook.pdf#page=200" target="_blank">
         <span class="card-emoji">📬</span>
-        <div class="card-title">Notice of Rent Increase</div>
-        <div class="card-desc">Properly notify tenants of upcoming rent changes</div>
-        <span class="card-tag">Chapter 5 • Move-Out</span>
+        <div class="card-title">Notice of Rent Increase / Change of Terms</div>
+        <div class="card-desc">Properly notify tenants of upcoming rent changes with required advance notice</div>
+        <span class="card-tag yellow">Renewal • Page 196</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=5" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=206" target="_blank">
         <span class="card-emoji">📄</span>
-        <div class="card-title">Lease Extension / Renewal Letter</div>
-        <div class="card-desc">Renew leases with updated terms — includes rent increase option</div>
-        <span class="card-tag">Chapter 5 • Move-Out</span>
+        <div class="card-title">Rental Agreement Extension & Upgrade Offer</div>
+        <div class="card-desc">Renew the lease with new terms and offer property upgrades as incentive</div>
+        <span class="card-tag yellow">Renewal • Page 202</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=5" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=213" target="_blank">
+        <span class="card-emoji">📅</span>
+        <div class="card-title">End of Lease Notice</div>
+        <div class="card-desc">Notify tenant their lease is ending and what their options are</div>
+        <span class="card-tag yellow">Move-Out • Page 209</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=216" target="_blank">
         <span class="card-emoji">🚪</span>
-        <div class="card-title">Move-Out Instructions & Cleaning Checklist</div>
-        <div class="card-desc">Set clear expectations for tenant move-out condition</div>
-        <span class="card-tag">Chapter 5 • Move-Out</span>
+        <div class="card-title">Right to Request Initial Move-Out Inspection</div>
+        <div class="card-desc">Tenant's right to a pre-move-out walkthrough — required in some states</div>
+        <span class="card-tag yellow">Move-Out • Page 212</span>
       </a>
-      <a class="card" href="landlord_handbook.pdf#page=5" target="_blank">
+      <a class="card" href="landlord_handbook.pdf#page=217" target="_blank">
         <span class="card-emoji">💵</span>
-        <div class="card-title">Security Deposit Return & Itemization</div>
-        <div class="card-desc">Document deductions and return remaining deposit properly</div>
-        <span class="card-tag">Chapter 5 • Move-Out</span>
+        <div class="card-title">How to Receive Your Full Deposit Back</div>
+        <div class="card-desc">Instructions for tenants on move-out condition to get full deposit returned</div>
+        <span class="card-tag yellow">Move-Out • Page 213</span>
       </a>
+      <a class="card" href="landlord_handbook.pdf#page=220" target="_blank">
+        <span class="card-emoji">📝</span>
+        <div class="card-title">Move-Out & Reminder Letter</div>
+        <div class="card-desc">Final reminder letter with move-out procedures, cleaning expectations, and key return</div>
+        <span class="card-tag yellow">Move-Out • Page 216</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=222" target="_blank">
+        <span class="card-emoji">📊</span>
+        <div class="card-title">Resident Exit Survey</div>
+        <div class="card-desc">Gather feedback from departing tenants — improve your property and processes</div>
+        <span class="card-tag yellow">Move-Out • Page 218</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=223" target="_blank">
+        <span class="card-emoji">💰</span>
+        <div class="card-title">Itemization of Security Deposit Return</div>
+        <div class="card-desc">Itemize all deductions and document remaining deposit returned — legally required</div>
+        <span class="card-tag yellow">Move-Out • Page 219</span>
+      </a>
+      <a class="card" href="landlord_handbook.pdf#page=224" target="_blank">
+        <span class="card-emoji">🏠</span>
+        <div class="card-title">Vacant Units Checklist / Make-Ready</div>
+        <div class="card-desc">Complete checklist for preparing a vacant unit for the next tenant</div>
+        <span class="card-tag yellow">Move-Out • Page 220</span>
+      </a>
+
     </div>
   </div>
 
-  <!-- SECTION 3: AUDIO INTERVIEWS -->
+  <!-- AUDIO INTERVIEWS -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">🎙️</span>
       <div>
-        <div class="section-title">VIP Landlord Audio Interviews</div>
-        <div class="section-desc">Real investor stories and strategies from MrLandlord.com</div>
+        <div class="section-title">VIP Landlord Interview Transcripts</div>
+        <div class="section-desc">Real investor strategies from MrLandlord.com — click to read full transcript</div>
       </div>
     </div>
     <a class="audio-item" href="transcripts/enlarge_vision_2.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Enlarge Your Vision — Part 2</div>
-        <div class="audio-desc">Buy & hold vs flipping strategy, the "Carl" negotiation story, creative seller financing, motivated seller tactics</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Buy & hold vs. flipping, the "Carl" negotiation story, creative seller financing, motivated seller tactics</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/enlarge_vision_6.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Enlarge Your Vision — Part 6</div>
-        <div class="audio-desc">Flooring upgrades, website advertising, texting tenants for late rent, proactive landlording mindset</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Flooring upgrades, website advertising, texting tenants for late rent, proactive landlord mindset</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/low_income_5.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Investing in Low Income — Part 5</div>
-        <div class="audio-desc">Section 8 strategy, building relationships with inspectors, getting the inspection checklist, FL utility records access</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Section 8 strategy, building relationships with inspectors, getting the inspection checklist, FL utility records</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/low_income_6.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Investing in Low Income — Part 6</div>
-        <div class="audio-desc">Perpetual student mindset, MrLandlord.com as daily resource, take it one step at a time, vision for giving back</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Perpetual student mindset, MrLandlord.com as daily resource, one step at a time, vision for giving back</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_1.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
-        <div class="audio-title">Quality Over Quantity — Part 1 (David Doyle, 42 Years)</div>
-        <div class="audio-desc">Getting started with duplexes, seller financing strategies, writing offers on the spot, why duplexes beat single families</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-title">Quality Over Quantity — Part 1 (David Doyle, 42 Years Experience)</div>
+        <div class="audio-desc">Getting started with duplexes, seller financing, writing offers on the spot, why duplexes beat single families</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_2.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Quality Over Quantity — Part 2</div>
-        <div class="audio-desc">The discounted rent program, deposit-only bank accounts, ka-ching alerts, screening through rent structure</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Discounted rent program, deposit-only bank accounts, ka-ching rent alerts, screening through rent structure</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_3.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Quality Over Quantity — Part 3</div>
-        <div class="audio-desc">What to do differently (start sooner, use more leverage), biggest achievements, handling the first eviction</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">What to do differently (start sooner, more leverage), biggest achievements, handling the first eviction</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_4.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Quality Over Quantity — Part 4</div>
-        <div class="audio-desc">Signs as best advertising, FL public records for screening, utility company relationships, code enforcement strategy</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Signs as best advertising, FL public records for tenant screening, utility company relationships, code enforcement</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_5.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Quality Over Quantity — Part 5</div>
-        <div class="audio-desc">Lease clauses for code violations, citing residents vs. owners, landlord groups, inviting judges and attorneys to speak</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Lease clauses for code violations, citing residents vs. owners, landlord groups, inviting judges to speak</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
     <a class="audio-item" href="transcripts/quality_6.txt" target="_blank">
       <span class="audio-icon">🎙️</span>
       <div>
         <div class="audio-title">Quality Over Quantity — Part 6</div>
-        <div class="audio-desc">Exit strategy, selling to younger investors with owner financing, property management companies, infinite ROI philosophy</div>
-        <span class="audio-tag">Transcript Available</span>
+        <div class="audio-desc">Exit strategy, selling to younger investors with owner financing, property management companies, infinite ROI</div>
+        <span class="audio-tag">Full Transcript</span>
       </div>
     </a>
   </div>
 
-  <!-- ASK KAI -->
   <div class="ask-bar">
     <h3>💬 Ask Kai Anything</h3>
-    <p>Go to <strong>#ai-property-manager</strong> in the Discord server and ask any question about these resources. Kai will find the answer, cite the relevant form or interview, and explain it clearly.</p>
+    <p>Head to <strong>#ai-property-manager</strong> in the Discord server and ask any question. Kai will pull the exact answer from these resources and explain it clearly.</p>
   </div>
 
 </div>
@@ -349,14 +614,21 @@
 </footer>
 
 <script>
-function filterForms() {
-  const q = document.getElementById('formSearch').value.toLowerCase();
-  const cards = document.querySelectorAll('#formsGrid .card');
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(q) ? '' : 'none';
-  });
-}
+  // Count forms
+  const allCards = document.querySelectorAll('#formsGrid .card');
+  document.getElementById('formCount').textContent = allCards.length + ' forms';
+
+  function filterForms() {
+    const q = document.getElementById('formSearch').value.toLowerCase().trim();
+    let visible = 0;
+    allCards.forEach(card => {
+      const match = !q || card.innerText.toLowerCase().includes(q);
+      card.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    document.getElementById('noResults').style.display = (q && visible === 0) ? 'block' : 'none';
+    document.getElementById('formCount').textContent = (q ? visible + ' matching' : allCards.length) + ' forms';
+  }
 </script>
 
 </body>
