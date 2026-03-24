@@ -8,49 +8,78 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0f0f; color: #e0e0e0; min-height: 100vh; }
   header { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); padding: 48px 24px 32px; text-align: center; border-bottom: 1px solid #2a2a4a; }
-  header h1 { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  header h1 { font-size: 2.2rem; font-weight: 700; color: #fff; }
   header p { color: #a0a8c0; margin-top: 8px; font-size: 1rem; }
-  .badge { display: inline-block; background: #e94560; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; letter-spacing: 1px; }
+  .badge { display: inline-block; background: #e94560; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
   .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
   .section { margin-bottom: 44px; }
   .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #2a2a3a; }
   .section-icon { font-size: 1.6rem; }
   .section-title { font-size: 1.25rem; font-weight: 700; color: #fff; }
   .section-desc { font-size: 0.85rem; color: #7a82a0; margin-top: 2px; }
+  .count-badge { font-size: 0.75rem; background: #2a2a4a; color: #8080c0; padding: 2px 10px; border-radius: 20px; margin-left: 8px; }
+
+  /* CORE GUIDES */
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
   .card { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s; }
   .card:hover { background: #22223a; border-color: #4a4a7a; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   .card-emoji { font-size: 1.4rem; }
   .card-title { font-size: 0.95rem; font-weight: 600; color: #d0d8ff; line-height: 1.3; }
-  .card-desc { font-size: 0.8rem; color: #6a7090; line-height: 1.4; }
-  .card-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: #1e3a5a; color: #60a0d0; letter-spacing: 0.5px; align-self: flex-start; }
-  .card-tag.red { background: #3a1a2a; color: #d06080; }
-  .card-tag.green { background: #1a3a2a; color: #60c080; }
-  .card-tag.purple { background: #2a1a3a; color: #a060d0; }
-  .card-tag.yellow { background: #3a3010; color: #d0b040; }
+  .card-desc { font-size: 0.8rem; color: #6a7090; line-height: 1.4; flex: 1; }
+  .card-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: #1e3a5a; color: #60a0d0; align-self: flex-start; }
+
+  /* FORMS */
   .search-bar { background: #1a1a2a; border: 1px solid #2a2a4a; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
   .search-bar input { background: none; border: none; outline: none; color: #e0e0e0; font-size: 0.95rem; flex: 1; }
   .search-bar input::placeholder { color: #4a4a6a; }
-  .hidden { display: none !important; }
   .no-results { color: #4a4a6a; text-align: center; padding: 24px; font-size: 0.9rem; display: none; }
-  .audio-item { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px; margin-bottom: 10px; text-decoration: none; color: inherit; transition: all 0.2s; }
-  .audio-item:hover { background: #22223a; border-color: #4a4a7a; transform: translateY(-1px); }
-  .audio-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-  .audio-title { font-size: 0.95rem; font-weight: 600; color: #d0d8ff; }
-  .audio-desc { font-size: 0.8rem; color: #6a7090; margin-top: 4px; line-height: 1.4; }
+  .hidden { display: none !important; }
+
+  .form-card { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 10px; transition: background 0.2s; }
+  .form-card:hover { background: #22223a; }
+  .form-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .form-card-body { flex: 1; min-width: 0; }
+  .form-card-title { font-size: 0.92rem; font-weight: 600; color: #d0d8ff; }
+  .form-card-desc { font-size: 0.78rem; color: #6a7090; margin-top: 3px; }
+  .form-card-tag { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: #1e3a5a; color: #60a0d0; display: inline-block; margin-top: 5px; }
+  .form-card-tag.red { background: #3a1a2a; color: #d06080; }
+  .form-card-tag.green { background: #1a3a2a; color: #60c080; }
+  .form-card-tag.purple { background: #2a1a3a; color: #a060d0; }
+  .form-card-tag.yellow { background: #3a3010; color: #d0b040; }
+  .form-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 7px; font-size: 0.78rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; border: none; cursor: pointer; }
+  .btn-view { background: #1e3a5a; color: #80c0ff; }
+  .btn-view:hover { background: #2a4a7a; }
+  .btn-download { background: #1a3a2a; color: #60c080; }
+  .btn-download:hover { background: #2a5a3a; }
+  .btn-print { background: #3a2a1a; color: #d0a060; }
+  .btn-print:hover { background: #5a3a1a; }
+
+  /* AUDIO */
+  .audio-card { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .audio-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .audio-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+  .audio-title { font-size: 1rem; font-weight: 600; color: #d0d8ff; }
+  .audio-desc { font-size: 0.82rem; color: #6a7090; margin-top: 4px; line-height: 1.4; }
   .audio-tag { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: #2a1a3a; color: #c080e0; display: inline-block; margin-top: 6px; }
+  .audio-player { width: 100%; margin-bottom: 12px; accent-color: #6060d0; }
+  .audio-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn-audio-dl { background: #2a1a3a; color: #c080e0; }
+  .btn-audio-dl:hover { background: #3a2a5a; }
+  .btn-transcript { background: #1e3a5a; color: #80c0ff; }
+  .btn-transcript:hover { background: #2a4a7a; }
+
   .ask-bar { background: linear-gradient(135deg, #1a2a1a, #1a1a2e); border: 1px solid #3a5a3a; border-radius: 12px; padding: 24px; margin-top: 40px; text-align: center; }
   .ask-bar h3 { color: #80d080; font-size: 1.1rem; margin-bottom: 8px; }
   .ask-bar p { color: #6a8a6a; font-size: 0.85rem; }
   footer { text-align: center; padding: 24px; color: #3a3a5a; font-size: 0.8rem; border-top: 1px solid #1a1a2a; margin-top: 20px; }
-  .count-badge { font-size: 0.75rem; background: #2a2a4a; color: #8080c0; padding: 2px 10px; border-radius: 20px; margin-left: 8px; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🏢 Kai Property Manager <span class="badge">RESOURCE HUB</span></h1>
-  <p>Complete library from MrLandlord.com — organized, searchable, downloadable</p>
+  <p>Complete library from MrLandlord.com — organized, searchable, downloadable & print-ready</p>
 </header>
 
 <div class="container">
@@ -60,28 +89,28 @@
     <div class="section-header">
       <span class="section-icon">📚</span>
       <div>
-        <div class="section-title">Core Guides</div>
-        <div class="section-desc">Download the complete books</div>
+        <div class="section-title">Core Guides — Full Books</div>
+        <div class="section-desc">Download the complete reference books</div>
       </div>
     </div>
     <div class="card-grid">
-      <a class="card" href="landlord_handbook.pdf" target="_blank">
+      <a class="card" href="landlord_handbook.pdf" download="Landlord-Handbook.pdf" target="_blank">
         <span class="card-emoji">📖</span>
-        <div class="card-title">Landlord Handbook — 220+ Rental Forms</div>
+        <div class="card-title">Landlord Handbook — 220+ Forms</div>
         <div class="card-desc">Complete 11th edition covering every stage of the rental cycle from screening to move-out</div>
-        <span class="card-tag">Full PDF • 247 pages</span>
+        <span class="card-tag">PDF • 247 pages • Click to Download</span>
       </a>
-      <a class="card" href="recordkeeper.pdf" target="_blank">
+      <a class="card" href="recordkeeper.pdf" download="Rental-Property-RecordKeeper.pdf" target="_blank">
         <span class="card-emoji">📊</span>
         <div class="card-title">Rental Property RecordKeeper</div>
         <div class="card-desc">50 recordkeeping forms for properties, tenants, maintenance, income, and expenses</div>
-        <span class="card-tag">Full PDF • Download</span>
+        <span class="card-tag">PDF • Download</span>
       </a>
-      <a class="card" href="collectors_series.pdf" target="_blank">
+      <a class="card" href="collectors_series.pdf" download="Collectors-Series.pdf" target="_blank">
         <span class="card-emoji">🎯</span>
         <div class="card-title">Mr. Landlord Collector's Series</div>
         <div class="card-desc">Advanced strategies for experienced landlords — forms 10 through 20</div>
-        <span class="card-tag">Full PDF • Download</span>
+        <span class="card-tag">PDF • Download</span>
       </a>
     </div>
   </div>
@@ -91,8 +120,8 @@
     <div class="section-header">
       <span class="section-icon">📋</span>
       <div>
-        <div class="section-title">Forms Library <span class="count-badge" id="formCount">50 forms</span></div>
-        <div class="section-desc">Click any form to open it directly — each link goes to the exact page</div>
+        <div class="section-title">Forms Library <span class="count-badge" id="formCount">66 forms</span></div>
+        <div class="section-desc">Each form opens individually • Download or print directly to any printer</div>
       </div>
     </div>
     <div class="search-bar">
@@ -100,413 +129,936 @@
       <input type="text" id="formSearch" placeholder="Search forms... (e.g. 'late fee', 'pet', 'eviction', 'move-out')" oninput="filterForms()">
     </div>
     <div class="no-results" id="noResults">No forms match your search. Try a different keyword.</div>
-    <div class="card-grid" id="formsGrid">
+    <div id="formsGrid">
 
       <!-- SCREENING -->
-      <a class="card" href="forms/rental-availability-hot-sheet.pdf" target="_blank">
-        <span class="card-emoji">📞</span>
-        <div class="card-title">Rental Availability Hot Sheet</div>
-        <div class="card-desc">Marketing sheet for prospective residents listing property details and availability</div>
-        <span class="card-tag">Screening • Page 1</span>
-      </a>
-      <a class="card" href="forms/phone-qualifying-worksheet.pdf" target="_blank">
-        <span class="card-emoji">📞</span>
-        <div class="card-title">Phone Qualifying Worksheet / Script</div>
-        <div class="card-desc">Pre-screen applicants over the phone before showing the property</div>
-        <span class="card-tag">Screening • Page 2</span>
-      </a>
-      <a class="card" href="forms/phone-summary-quick-survey.pdf" target="_blank">
-        <span class="card-emoji">📋</span>
-        <div class="card-title">Phone Summary / Quick Survey</div>
-        <div class="card-desc">Quick summary form to document phone conversations with prospective tenants</div>
-        <span class="card-tag">Screening • Page 3</span>
-      </a>
-      <a class="card" href="forms/open-house-appointment-schedule.pdf" target="_blank">
-        <span class="card-emoji">🗓️</span>
-        <div class="card-title">Open House Appointment Schedule</div>
-        <div class="card-desc">Group showing appointment scheduler to maximize showing efficiency</div>
-        <span class="card-tag">Screening • Page 4</span>
-      </a>
-      <a class="card" href="forms/house-for-rent-descriptive-handout.pdf" target="_blank">
-        <span class="card-emoji">🏠</span>
-        <div class="card-title">House For Rent Descriptive Handout</div>
-        <div class="card-desc">Property description handout to give to prospective renters at showings</div>
-        <span class="card-tag">Screening • Page 6</span>
-      </a>
-      <a class="card" href="forms/rental-application-future-homebuyer.pdf" target="_blank">
-        <span class="card-emoji">📝</span>
-        <div class="card-title">Rental Application / Future Homebuyer</div>
-        <div class="card-desc">Comprehensive rental application including future homebuyer option — pages 13–14</div>
-        <span class="card-tag">Screening • Page 13</span>
-      </a>
-      <a class="card" href="forms/application-addendum-acceptance.pdf" target="_blank">
-        <span class="card-emoji">✍️</span>
-        <div class="card-title">Application Addendum — Acceptance of Terms</div>
-        <div class="card-desc">Supplemental addendum for applicants to accept rental terms and conditions</div>
-        <span class="card-tag">Screening • Page 15</span>
-      </a>
-      <a class="card" href="forms/corporate-housing-rental-application.pdf" target="_blank">
-        <span class="card-emoji">🏢</span>
-        <div class="card-title">Corporate Housing Rental Application</div>
-        <div class="card-desc">Specialized application for corporate tenants and business housing arrangements</div>
-        <span class="card-tag">Screening • Page 16</span>
-      </a>
-      <a class="card" href="forms/new-tenant-checklist.pdf" target="_blank">
-        <span class="card-emoji">✅</span>
-        <div class="card-title">New Tenant Checklist</div>
-        <div class="card-desc">Step-by-step checklist for onboarding and approving new tenants</div>
-        <span class="card-tag">Screening • Page 19</span>
-      </a>
-      <a class="card" href="forms/non-acceptance-checklist.pdf" target="_blank">
-        <span class="card-emoji">❌</span>
-        <div class="card-title">Non-Acceptance Checklist for New Residents</div>
-        <div class="card-desc">Document reasons for denying an application — protects against fair housing claims</div>
-        <span class="card-tag">Screening • Page 20</span>
-      </a>
-      <a class="card" href="forms/pet-application-registration.pdf" target="_blank">
-        <span class="card-emoji">🐾</span>
-        <div class="card-title">Pet Application / Registration Form</div>
-        <div class="card-desc">Screen pet owners and register approved pets with full documentation</div>
-        <span class="card-tag">Screening • Page 21</span>
-      </a>
-      <a class="card" href="forms/new-pet-checklist.pdf" target="_blank">
-        <span class="card-emoji">🐕</span>
-        <div class="card-title">New Pet Checklist — Qualified Applicants</div>
-        <div class="card-desc">Identify and screen qualified dog-owning applicants; includes dangerous breed list</div>
-        <span class="card-tag">Screening • Page 22</span>
-      </a>
-      <a class="card" href="forms/assistance-animal-application.pdf" target="_blank">
-        <span class="card-emoji">♿</span>
-        <div class="card-title">Assistance Animal Application Process</div>
-        <div class="card-desc">Proper form for ESA / service animal requests — fair housing compliant</div>
-        <span class="card-tag">Screening • Page 24</span>
-      </a>
-      <a class="card" href="forms/employment-verification.pdf" target="_blank">
-        <span class="card-emoji">💼</span>
-        <div class="card-title">Employment Verification Form</div>
-        <div class="card-desc">Verify applicant employment and income with their employer directly</div>
-        <span class="card-tag">Screening • Page 27</span>
-      </a>
-      <a class="card" href="forms/phone-questions-former-landlord.pdf" target="_blank">
-        <span class="card-emoji">☎️</span>
-        <div class="card-title">Phone Questions to Ask Former Landlord</div>
-        <div class="card-desc">Script for calling prior landlords — the questions that reveal problem tenants</div>
-        <span class="card-tag">Screening • Page 28</span>
-      </a>
-      <a class="card" href="forms/landlord-verification-form.pdf" target="_blank">
-        <span class="card-emoji">🔍</span>
-        <div class="card-title">Landlord Verification Form</div>
-        <div class="card-desc">Written verification form to send to previous landlords for documented rental history</div>
-        <span class="card-tag">Screening • Page 29</span>
-      </a>
-      <a class="card" href="forms/approval-of-rental-application.pdf" target="_blank">
-        <span class="card-emoji">✅</span>
-        <div class="card-title">Approval of Rental Application</div>
-        <div class="card-desc">Official approval notice for accepted applicants with next steps</div>
-        <span class="card-tag">Screening • Page 34</span>
-      </a>
-      <a class="card" href="forms/transfer-utilities-form.pdf" target="_blank">
-        <span class="card-emoji">💡</span>
-        <div class="card-title">Transfer Utilities Form</div>
-        <div class="card-desc">Guide new tenants to transfer utilities into their name before move-in</div>
-        <span class="card-tag">Screening • Page 35</span>
-      </a>
-      <a class="card" href="forms/holding-deposit-receipt.pdf" target="_blank">
-        <span class="card-emoji">🤝</span>
-        <div class="card-title">Holding Deposit Receipt</div>
-        <div class="card-desc">Receipt when applicant places a deposit to hold the unit while being processed</div>
-        <span class="card-tag">Screening • Page 36</span>
-      </a>
-      <a class="card" href="forms/rental-application-not-approved.pdf" target="_blank">
-        <span class="card-emoji">🚫</span>
-        <div class="card-title">Rental Application — Not Approved</div>
-        <div class="card-desc">Denial notice with documented reasons — protects against discrimination claims</div>
-        <span class="card-tag">Screening • Page 38</span>
-      </a>
-      <a class="card" href="forms/key-sign-out-form.pdf" target="_blank">
-        <span class="card-emoji">🔑</span>
-        <div class="card-title">Key Sign Out Form</div>
-        <div class="card-desc">Track every key issued to applicants, contractors, and tenants</div>
-        <span class="card-tag">Screening • Page 41</span>
-      </a>
+      <div class="form-card" data-search="rental availability hot sheet screening marketing prospective residents">
+        <span class="form-card-icon">📞</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Rental Availability Hot Sheet</div>
+          <div class="form-card-desc">Marketing sheet listing property details for prospective residents</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/rental-availability-hot-sheet.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/rental-availability-hot-sheet.pdf" download="Rental-Availability-Hot-Sheet.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/rental-availability-hot-sheet.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="phone qualifying worksheet script screening pre-screen call">
+        <span class="form-card-icon">📞</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Phone Qualifying Worksheet / Script</div>
+          <div class="form-card-desc">Pre-screen applicants over the phone before showing the property</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/phone-qualifying-worksheet.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/phone-qualifying-worksheet.pdf" download="Phone-Qualifying-Worksheet.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/phone-qualifying-worksheet.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="phone summary quick survey screening notes">
+        <span class="form-card-icon">📋</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Phone Summary / Quick Survey</div>
+          <div class="form-card-desc">Document phone conversations with prospective tenants</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/phone-summary-quick-survey.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/phone-summary-quick-survey.pdf" download="Phone-Summary-Quick-Survey.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/phone-summary-quick-survey.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="open house appointment schedule group showing">
+        <span class="form-card-icon">🗓️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Open House Appointment Schedule</div>
+          <div class="form-card-desc">Group showing scheduler — maximize showing efficiency</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/open-house-appointment-schedule.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/open-house-appointment-schedule.pdf" download="Open-House-Appointment-Schedule.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/open-house-appointment-schedule.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="house for rent descriptive handout showing property details">
+        <span class="form-card-icon">🏠</span>
+        <div class="form-card-body">
+          <div class="form-card-title">House For Rent Descriptive Handout</div>
+          <div class="form-card-desc">Property description to give to prospective renters at showings</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/house-for-rent-descriptive-handout.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/house-for-rent-descriptive-handout.pdf" download="House-For-Rent-Handout.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/house-for-rent-descriptive-handout.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="rental application future homebuyer applicant screening">
+        <span class="form-card-icon">📝</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Rental Application / Future Homebuyer</div>
+          <div class="form-card-desc">Comprehensive application with future homebuyer option</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/rental-application-future-homebuyer.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/rental-application-future-homebuyer.pdf" download="Rental-Application.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/rental-application-future-homebuyer.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="application addendum acceptance terms conditions">
+        <span class="form-card-icon">✍️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Application Addendum — Acceptance of Terms</div>
+          <div class="form-card-desc">Applicant accepts rental terms and conditions</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/application-addendum-acceptance.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/application-addendum-acceptance.pdf" download="Application-Addendum-Acceptance.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/application-addendum-acceptance.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="corporate housing rental application business tenant">
+        <span class="form-card-icon">🏢</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Corporate Housing Rental Application</div>
+          <div class="form-card-desc">Specialized application for corporate tenants</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/corporate-housing-rental-application.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/corporate-housing-rental-application.pdf" download="Corporate-Housing-Application.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/corporate-housing-rental-application.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="new tenant checklist onboarding approval screening">
+        <span class="form-card-icon">✅</span>
+        <div class="form-card-body">
+          <div class="form-card-title">New Tenant Checklist</div>
+          <div class="form-card-desc">Step-by-step checklist for onboarding new tenants</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/new-tenant-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/new-tenant-checklist.pdf" download="New-Tenant-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/new-tenant-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="non acceptance checklist denial fair housing">
+        <span class="form-card-icon">❌</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Non-Acceptance Checklist</div>
+          <div class="form-card-desc">Document denial reasons — protects against fair housing claims</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/non-acceptance-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/non-acceptance-checklist.pdf" download="Non-Acceptance-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/non-acceptance-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="pet application registration form animal dog cat">
+        <span class="form-card-icon">🐾</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Pet Application / Registration Form</div>
+          <div class="form-card-desc">Screen pet owners and register approved pets</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/pet-application-registration.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/pet-application-registration.pdf" download="Pet-Application-Registration.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/pet-application-registration.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="new pet checklist dog breeds dangerous qualified applicants">
+        <span class="form-card-icon">🐕</span>
+        <div class="form-card-body">
+          <div class="form-card-title">New Pet Checklist — Qualified Dog Owners</div>
+          <div class="form-card-desc">Screen dog-owning applicants; includes dangerous breed reference list</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/new-pet-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/new-pet-checklist.pdf" download="New-Pet-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/new-pet-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="assistance animal ESA service animal fair housing ADA">
+        <span class="form-card-icon">♿</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Assistance Animal Application</div>
+          <div class="form-card-desc">ESA / service animal requests — fair housing compliant process</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/assistance-animal-application.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/assistance-animal-application.pdf" download="Assistance-Animal-Application.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/assistance-animal-application.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="employment verification income employer verify">
+        <span class="form-card-icon">💼</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Employment Verification Form</div>
+          <div class="form-card-desc">Verify applicant employment and income with their employer</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/employment-verification.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/employment-verification.pdf" download="Employment-Verification.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/employment-verification.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="phone questions former landlord rental history reference check">
+        <span class="form-card-icon">☎️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Phone Questions to Ask Former Landlord</div>
+          <div class="form-card-desc">Script for calling prior landlords — reveals problem tenants</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/phone-questions-former-landlord.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/phone-questions-former-landlord.pdf" download="Phone-Questions-Former-Landlord.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/phone-questions-former-landlord.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="landlord verification form written rental history reference">
+        <span class="form-card-icon">🔍</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Landlord Verification Form</div>
+          <div class="form-card-desc">Written form sent to previous landlords for documented rental history</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/landlord-verification-form.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/landlord-verification-form.pdf" download="Landlord-Verification-Form.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/landlord-verification-form.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="approval rental application accepted approved notice">
+        <span class="form-card-icon">✅</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Approval of Rental Application</div>
+          <div class="form-card-desc">Official approval notice for accepted applicants with next steps</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/approval-of-rental-application.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/approval-of-rental-application.pdf" download="Approval-of-Rental-Application.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/approval-of-rental-application.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="transfer utilities form electric water gas new tenant">
+        <span class="form-card-icon">💡</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Transfer Utilities Form</div>
+          <div class="form-card-desc">Guide new tenants to transfer utilities before move-in</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/transfer-utilities-form.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/transfer-utilities-form.pdf" download="Transfer-Utilities-Form.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/transfer-utilities-form.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="holding deposit receipt hold unit processing">
+        <span class="form-card-icon">🤝</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Holding Deposit Receipt</div>
+          <div class="form-card-desc">Receipt when applicant places a deposit to hold the unit</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/holding-deposit-receipt.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/holding-deposit-receipt.pdf" download="Holding-Deposit-Receipt.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/holding-deposit-receipt.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="rental application not approved denial denied rejected">
+        <span class="form-card-icon">🚫</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Rental Application — Not Approved</div>
+          <div class="form-card-desc">Denial notice with documented reasons — fair housing protection</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/rental-application-not-approved.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/rental-application-not-approved.pdf" download="Rental-Application-Not-Approved.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/rental-application-not-approved.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="key sign out form track keys issued contractor">
+        <span class="form-card-icon">🔑</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Key Sign Out Form</div>
+          <div class="form-card-desc">Track every key issued to applicants, contractors, tenants</div>
+          <span class="form-card-tag">Screening</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/key-sign-out-form.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/key-sign-out-form.pdf" download="Key-Sign-Out-Form.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/key-sign-out-form.pdf')">🖨 Print</button>
+        </div>
+      </div>
 
       <!-- LEASE / MOVE-IN -->
-      <a class="card" href="forms/standard-residential-lease.pdf" target="_blank">
-        <span class="card-emoji">📄</span>
-        <div class="card-title">Standard Residential Lease Agreement</div>
-        <div class="card-desc">Full lease template — includes bi-weekly payment plan and 66+ clauses covering all scenarios</div>
-        <span class="card-tag green">Lease • Page 47</span>
-      </a>
-      <a class="card" href="forms/sample-lease-clauses.pdf" target="_blank">
-        <span class="card-emoji">➕</span>
-        <div class="card-title">Sample Lease Clauses to Consider</div>
-        <div class="card-desc">Additional protective clauses to add to any lease — cover edge cases and common problems</div>
-        <span class="card-tag green">Lease • Page 57</span>
-      </a>
-      <a class="card" href="forms/house-rules-addendum.pdf" target="_blank">
-        <span class="card-emoji">📏</span>
-        <div class="card-title">House Rules Addendum</div>
-        <div class="card-desc">34+ property rules covering noise, outdoor items, temperature, and more</div>
-        <span class="card-tag green">Lease • Page 60</span>
-      </a>
-      <a class="card" href="forms/security-deposit-addendum.pdf" target="_blank">
-        <span class="card-emoji">💰</span>
-        <div class="card-title">Security Deposit Addendum</div>
-        <div class="card-desc">Document deposit terms, deduction policies, and conditions for full return</div>
-        <span class="card-tag green">Lease • Page 65</span>
-      </a>
-      <a class="card" href="forms/receipt-first-month-rent-deposit.pdf" target="_blank">
-        <span class="card-emoji">🧾</span>
-        <div class="card-title">Receipt for First Month's Rent & Deposit</div>
-        <div class="card-desc">Official receipt when collecting move-in funds — creates a paper trail</div>
-        <span class="card-tag green">Lease • Page 66</span>
-      </a>
-      <a class="card" href="forms/property-condition-checklist.pdf" target="_blank">
-        <span class="card-emoji">📸</span>
-        <div class="card-title">Property Condition Checklist</div>
-        <div class="card-desc">Document every room's condition at move-in — your defense at move-out for deposit deductions</div>
-        <span class="card-tag green">Move-In • Page 68</span>
-      </a>
-      <a class="card" href="forms/pet-addendum.pdf" target="_blank">
-        <span class="card-emoji">🐾</span>
-        <div class="card-title">Pet Addendum</div>
-        <div class="card-desc">Add pet terms to any lease — fees, rules, damage liability, breed restrictions</div>
-        <span class="card-tag green">Lease • Page 81</span>
-      </a>
-      <a class="card" href="forms/garage-storage-rental-agreement.pdf" target="_blank">
-        <span class="card-emoji">🚗</span>
-        <div class="card-title">Garage / Storage Rental Agreement</div>
-        <div class="card-desc">Separate agreement for renting garage or storage space — additional income stream</div>
-        <span class="card-tag green">Lease • Page 84</span>
-      </a>
-      <a class="card" href="forms/parking-agreement.pdf" target="_blank">
-        <span class="card-emoji">🅿️</span>
-        <div class="card-title">Parking Agreement</div>
-        <div class="card-desc">Define parking spaces, rules, unauthorized vehicle policy, and violations</div>
-        <span class="card-tag green">Lease • Page 86</span>
-      </a>
-      <a class="card" href="forms/crime-drug-free-addendum.pdf" target="_blank">
-        <span class="card-emoji">🚔</span>
-        <div class="card-title">Crime / Drug Free Addendum</div>
-        <div class="card-desc">Zero-tolerance clause for criminal activity — grounds for immediate lease termination</div>
-        <span class="card-tag green">Lease • Page 87</span>
-      </a>
-      <a class="card" href="forms/smoke-free-addendum.pdf" target="_blank">
-        <span class="card-emoji">🚭</span>
-        <div class="card-title">Smoke-Free Addendum</div>
-        <div class="card-desc">Non-smoking policy for the entire property including common areas</div>
-        <span class="card-tag green">Lease • Page 88</span>
-      </a>
-      <a class="card" href="forms/mold-addendum.pdf" target="_blank">
-        <span class="card-emoji">💧</span>
-        <div class="card-title">Mold Addendum</div>
-        <div class="card-desc">Tenant responsibilities for preventing mold — limits landlord liability</div>
-        <span class="card-tag green">Lease • Page 92</span>
-      </a>
-      <a class="card" href="forms/lead-based-paint-disclosure.pdf" target="_blank">
-        <span class="card-emoji">⚠️</span>
-        <div class="card-title">Lead-Based Paint Disclosure</div>
-        <div class="card-desc">Federally required disclosure for homes built before 1978 — legally mandatory</div>
-        <span class="card-tag green">Lease • Page 98</span>
-      </a>
-      <a class="card" href="forms/move-in-checklist.pdf" target="_blank">
-        <span class="card-emoji">🔑</span>
-        <div class="card-title">Move-In Checklist</div>
-        <div class="card-desc">Room-by-room condition checklist completed with tenant at move-in</div>
-        <span class="card-tag green">Move-In • Page 101</span>
-      </a>
+      <div class="form-card" data-search="standard residential lease agreement rental contract">
+        <span class="form-card-icon">📄</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Standard Residential Lease Agreement</div>
+          <div class="form-card-desc">Full lease template — 66+ clauses, bi-weekly payment option</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/standard-residential-lease.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/standard-residential-lease.pdf" download="Standard-Residential-Lease.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/standard-residential-lease.pdf')">🖨 Print</button>
+        </div>
+      </div>
 
-      <!-- RENT COLLECTION -->
-      <a class="card" href="forms/notice-late-rent-late-fee.pdf" target="_blank">
-        <span class="card-emoji">⚠️</span>
-        <div class="card-title">Notice of Late Rent / Late Fee / Charges</div>
-        <div class="card-desc">First written notice when rent is overdue — trigger before formal legal action</div>
-        <span class="card-tag red">Rent • Page 109</span>
-      </a>
-      <a class="card" href="forms/notice-strict-enforcement.pdf" target="_blank">
-        <span class="card-emoji">📢</span>
-        <div class="card-title">Notice of Strict Enforcement of Rental Policy</div>
-        <div class="card-desc">Formal warning that all policies will now be strictly enforced — resets tenant behavior</div>
-        <span class="card-tag red">Rent • Page 110</span>
-      </a>
-      <a class="card" href="forms/returned-check-notice.pdf" target="_blank">
-        <span class="card-emoji">🏦</span>
-        <div class="card-title">Returned Check Notice</div>
-        <div class="card-desc">Notice for bounced checks with returned check fee and future payment requirements</div>
-        <span class="card-tag red">Rent • Page 111</span>
-      </a>
-      <a class="card" href="forms/notice-to-pay-rent-or-quit.pdf" target="_blank">
-        <span class="card-emoji">🚨</span>
-        <div class="card-title">Notice to Pay Rent or Quit</div>
-        <div class="card-desc">Formal legal notice required before eviction filing — must be served correctly</div>
-        <span class="card-tag red">Rent • Page 112</span>
-      </a>
-      <a class="card" href="forms/promise-for-payment.pdf" target="_blank">
-        <span class="card-emoji">🤝</span>
-        <div class="card-title">Promise for Payment</div>
-        <div class="card-desc">Document when a tenant verbally commits to a payment date — creates enforceable record</div>
-        <span class="card-tag red">Rent • Page 114</span>
-      </a>
-      <a class="card" href="forms/promissory-note.pdf" target="_blank">
-        <span class="card-emoji">📜</span>
-        <div class="card-title">Promissory Note</div>
-        <div class="card-desc">Legal promissory note for past-due rent — stronger than a promise form</div>
-        <span class="card-tag red">Rent • Page 115</span>
-      </a>
-      <a class="card" href="forms/notice-to-perform-or-quit.pdf" target="_blank">
-        <span class="card-emoji">⚖️</span>
-        <div class="card-title">Notice to Perform or Quit</div>
-        <div class="card-desc">Notice for lease violations (non-payment or rule violations) — step before eviction</div>
-        <span class="card-tag red">Rent • Page 117</span>
-      </a>
-      <a class="card" href="forms/rental-upkeep-violation.pdf" target="_blank">
-        <span class="card-emoji">🏡</span>
-        <div class="card-title">Rental Upkeep Violation Notice</div>
-        <div class="card-desc">Written warning for property maintenance violations by the tenant</div>
-        <span class="card-tag red">Violations • Page 118</span>
-      </a>
-      <a class="card" href="forms/garbage-violation-notice.pdf" target="_blank">
-        <span class="card-emoji">🗑️</span>
-        <div class="card-title">Garbage Violation Notice</div>
-        <div class="card-desc">Notice for improper trash disposal — city code violation prevention</div>
-        <span class="card-tag red">Violations • Page 120</span>
-      </a>
-      <a class="card" href="forms/pet-violation-notice.pdf" target="_blank">
-        <span class="card-emoji">🐈</span>
-        <div class="card-title">Pet Violation Notice</div>
-        <div class="card-desc">Notice for unauthorized pets or violations of the pet addendum</div>
-        <span class="card-tag red">Violations • Page 124</span>
-      </a>
-      <a class="card" href="forms/parking-violation-warning.pdf" target="_blank">
-        <span class="card-emoji">🚗</span>
-        <div class="card-title">Parking Violation Warning Notice</div>
-        <div class="card-desc">Warning for unauthorized parking — windshield or door notice version</div>
-        <span class="card-tag red">Violations • Page 138</span>
-      </a>
-      <a class="card" href="forms/partial-payment-acceptance.pdf" target="_blank">
-        <span class="card-emoji">💵</span>
-        <div class="card-title">Partial Payment Acceptance Form</div>
-        <div class="card-desc">Accept partial rent payments without waiving right to collect the balance</div>
-        <span class="card-tag red">Rent • Page 129</span>
-      </a>
-      <a class="card" href="forms/request-for-judgment-collection.pdf" target="_blank">
-        <span class="card-emoji">🏛️</span>
-        <div class="card-title">Request for Judgment / Collection Letter</div>
-        <div class="card-desc">Post-eviction collection process forms — recover unpaid rent through courts</div>
-        <span class="card-tag red">Eviction • Page 131</span>
-      </a>
+      <div class="form-card" data-search="sample lease clauses addendum protective edge cases">
+        <span class="form-card-icon">➕</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Sample Lease Clauses to Consider</div>
+          <div class="form-card-desc">Additional protective clauses to add to any lease</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/sample-lease-clauses.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/sample-lease-clauses.pdf" download="Sample-Lease-Clauses.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/sample-lease-clauses.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="house rules addendum noise outdoor temperature lease">
+        <span class="form-card-icon">📏</span>
+        <div class="form-card-body">
+          <div class="form-card-title">House Rules Addendum</div>
+          <div class="form-card-desc">34+ property rules — noise, outdoor items, temperature, behavior</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/house-rules-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/house-rules-addendum.pdf" download="House-Rules-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/house-rules-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="security deposit addendum terms deduction return">
+        <span class="form-card-icon">💰</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Security Deposit Addendum</div>
+          <div class="form-card-desc">Deposit terms, deduction policies, conditions for full return</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/security-deposit-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/security-deposit-addendum.pdf" download="Security-Deposit-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/security-deposit-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="receipt first month rent deposit move-in payment">
+        <span class="form-card-icon">🧾</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Receipt for First Month's Rent & Deposit</div>
+          <div class="form-card-desc">Official receipt when collecting move-in funds — paper trail</div>
+          <span class="form-card-tag green">Move-In</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/receipt-first-month-rent-deposit.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/receipt-first-month-rent-deposit.pdf" download="Receipt-First-Month-Rent-Deposit.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/receipt-first-month-rent-deposit.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="property condition checklist move in inspection room damage">
+        <span class="form-card-icon">📸</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Property Condition Checklist</div>
+          <div class="form-card-desc">Document every room's condition at move-in — your defense for deposit deductions</div>
+          <span class="form-card-tag green">Move-In</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/property-condition-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/property-condition-checklist.pdf" download="Property-Condition-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/property-condition-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="pet addendum lease dog cat animal fee damage">
+        <span class="form-card-icon">🐾</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Pet Addendum</div>
+          <div class="form-card-desc">Pet terms added to lease — fees, rules, damage liability</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/pet-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/pet-addendum.pdf" download="Pet-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/pet-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="garage storage rental agreement extra income space">
+        <span class="form-card-icon">🚗</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Garage / Storage Rental Agreement</div>
+          <div class="form-card-desc">Separate agreement for garage or storage — additional income stream</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/garage-storage-rental-agreement.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/garage-storage-rental-agreement.pdf" download="Garage-Storage-Rental-Agreement.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/garage-storage-rental-agreement.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="parking agreement space rules unauthorized vehicle violation">
+        <span class="form-card-icon">🅿️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Parking Agreement</div>
+          <div class="form-card-desc">Define spaces, rules, unauthorized vehicle policy and violations</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/parking-agreement.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/parking-agreement.pdf" download="Parking-Agreement.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/parking-agreement.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="crime drug free addendum criminal activity zero tolerance eviction">
+        <span class="form-card-icon">🚔</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Crime / Drug Free Addendum</div>
+          <div class="form-card-desc">Zero-tolerance for criminal activity — grounds for immediate termination</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/crime-drug-free-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/crime-drug-free-addendum.pdf" download="Crime-Drug-Free-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/crime-drug-free-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="smoke free addendum non smoking policy no smoking">
+        <span class="form-card-icon">🚭</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Smoke-Free Addendum</div>
+          <div class="form-card-desc">Non-smoking policy for the entire property including common areas</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/smoke-free-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/smoke-free-addendum.pdf" download="Smoke-Free-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/smoke-free-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="mold addendum tenant responsibility prevention liability">
+        <span class="form-card-icon">💧</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Mold Addendum</div>
+          <div class="form-card-desc">Tenant responsibilities for mold prevention — limits landlord liability</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/mold-addendum.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/mold-addendum.pdf" download="Mold-Addendum.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/mold-addendum.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="lead based paint disclosure required federal pre-1978">
+        <span class="form-card-icon">⚠️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Lead-Based Paint Disclosure</div>
+          <div class="form-card-desc">Federally required for homes built before 1978 — legally mandatory</div>
+          <span class="form-card-tag green">Lease</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/lead-based-paint-disclosure.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/lead-based-paint-disclosure.pdf" download="Lead-Based-Paint-Disclosure.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/lead-based-paint-disclosure.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="move in checklist room condition inspection walk-through">
+        <span class="form-card-icon">🔑</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Move-In Checklist</div>
+          <div class="form-card-desc">Room-by-room condition checklist completed with tenant at move-in</div>
+          <span class="form-card-tag green">Move-In</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/move-in-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/move-in-checklist.pdf" download="Move-In-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/move-in-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <!-- RENT COLLECTION / VIOLATIONS -->
+      <div class="form-card" data-search="notice late rent late fee charges overdue past due">
+        <span class="form-card-icon">⚠️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice of Late Rent / Late Fee / Charges</div>
+          <div class="form-card-desc">First written notice when rent is overdue — triggers before legal action</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-late-rent-late-fee.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-late-rent-late-fee.pdf" download="Notice-Late-Rent-Late-Fee.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-late-rent-late-fee.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="notice strict enforcement rental policy warning reset behavior">
+        <span class="form-card-icon">📢</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice of Strict Enforcement of Rental Policy</div>
+          <div class="form-card-desc">Formal warning — all policies strictly enforced from this point on</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-strict-enforcement.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-strict-enforcement.pdf" download="Notice-Strict-Enforcement.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-strict-enforcement.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="returned check notice bounced NSF fee payment">
+        <span class="form-card-icon">🏦</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Returned Check Notice</div>
+          <div class="form-card-desc">Notice for bounced checks with returned check fee requirements</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/returned-check-notice.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/returned-check-notice.pdf" download="Returned-Check-Notice.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/returned-check-notice.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="notice to pay rent or quit eviction legal 3-day">
+        <span class="form-card-icon">🚨</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice to Pay Rent or Quit</div>
+          <div class="form-card-desc">Legal notice required before eviction filing — must be served correctly</div>
+          <span class="form-card-tag red">Eviction</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-to-pay-rent-or-quit.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-to-pay-rent-or-quit.pdf" download="Notice-to-Pay-Rent-or-Quit.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-to-pay-rent-or-quit.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="promise for payment payment plan date commitment">
+        <span class="form-card-icon">🤝</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Promise for Payment</div>
+          <div class="form-card-desc">Document when tenant commits to a payment date — enforceable record</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/promise-for-payment.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/promise-for-payment.pdf" download="Promise-for-Payment.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/promise-for-payment.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="promissory note legal past due rent owed enforceable">
+        <span class="form-card-icon">📜</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Promissory Note</div>
+          <div class="form-card-desc">Legal promissory note for past-due rent — stronger than a promise form</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/promissory-note.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/promissory-note.pdf" download="Promissory-Note.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/promissory-note.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="notice to perform or quit violation lease cure eviction">
+        <span class="form-card-icon">⚖️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice to Perform or Quit</div>
+          <div class="form-card-desc">Notice for lease violations — step before eviction filing</div>
+          <span class="form-card-tag red">Eviction</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-to-perform-or-quit.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-to-perform-or-quit.pdf" download="Notice-to-Perform-or-Quit.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-to-perform-or-quit.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="rental upkeep violation notice property maintenance tenant">
+        <span class="form-card-icon">🏡</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Rental Upkeep Violation Notice</div>
+          <div class="form-card-desc">Written warning for property maintenance violations by tenant</div>
+          <span class="form-card-tag red">Violations</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/rental-upkeep-violation.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/rental-upkeep-violation.pdf" download="Rental-Upkeep-Violation.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/rental-upkeep-violation.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="garbage violation notice trash disposal code city">
+        <span class="form-card-icon">🗑️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Garbage Violation Notice</div>
+          <div class="form-card-desc">Notice for improper trash disposal — city code violation prevention</div>
+          <span class="form-card-tag red">Violations</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/garbage-violation-notice.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/garbage-violation-notice.pdf" download="Garbage-Violation-Notice.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/garbage-violation-notice.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="pet violation notice unauthorized animal lease breach">
+        <span class="form-card-icon">🐈</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Pet Violation Notice</div>
+          <div class="form-card-desc">Notice for unauthorized pets or violations of the pet addendum</div>
+          <span class="form-card-tag red">Violations</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/pet-violation-notice.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/pet-violation-notice.pdf" download="Pet-Violation-Notice.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/pet-violation-notice.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="parking violation warning unauthorized windshield door notice">
+        <span class="form-card-icon">🚗</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Parking Violation Warning Notice</div>
+          <div class="form-card-desc">Warning for unauthorized parking — windshield or door version</div>
+          <span class="form-card-tag red">Violations</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/parking-violation-warning.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/parking-violation-warning.pdf" download="Parking-Violation-Warning.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/parking-violation-warning.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="partial payment acceptance waiver balance owed">
+        <span class="form-card-icon">💵</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Partial Payment Acceptance Form</div>
+          <div class="form-card-desc">Accept partial rent without waiving right to collect the balance</div>
+          <span class="form-card-tag red">Rent Collection</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/partial-payment-acceptance.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/partial-payment-acceptance.pdf" download="Partial-Payment-Acceptance.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/partial-payment-acceptance.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="request judgment collection letter post eviction recover unpaid">
+        <span class="form-card-icon">🏛️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Request for Judgment / Collection Letter</div>
+          <div class="form-card-desc">Post-eviction collection — recover unpaid rent through courts</div>
+          <span class="form-card-tag red">Eviction</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/request-for-judgment-collection.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/request-for-judgment-collection.pdf" download="Request-for-Judgment-Collection.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/request-for-judgment-collection.pdf')">🖨 Print</button>
+        </div>
+      </div>
 
       <!-- MAINTENANCE -->
-      <a class="card" href="forms/notice-of-intent-to-enter.pdf" target="_blank">
-        <span class="card-emoji">🔔</span>
-        <div class="card-title">Notice of Intent to Enter</div>
-        <div class="card-desc">Proper advance notice before entering tenant's unit — legally required in most states</div>
-        <span class="card-tag purple">Maintenance • Page 149</span>
-      </a>
-      <a class="card" href="forms/full-inspection-report.pdf" target="_blank">
-        <span class="card-emoji">🏠</span>
-        <div class="card-title">Full Inspection Report</div>
-        <div class="card-desc">Comprehensive property inspection — room-by-room documentation for landlord records</div>
-        <span class="card-tag purple">Maintenance • Page 152</span>
-      </a>
-      <a class="card" href="forms/seasonal-maintenance-checklists.pdf" target="_blank">
-        <span class="card-emoji">🌸</span>
-        <div class="card-title">Spring / Summer / Winter Maintenance Checklists</div>
-        <div class="card-desc">Seasonal preventive maintenance schedules to avoid costly repairs</div>
-        <span class="card-tag purple">Maintenance • Page 154</span>
-      </a>
-      <a class="card" href="forms/maintenance-request-form.pdf" target="_blank">
-        <span class="card-emoji">🔧</span>
-        <div class="card-title">Maintenance Request Form</div>
-        <div class="card-desc">Tenant-facing form to submit maintenance requests — documents all repair needs</div>
-        <span class="card-tag purple">Maintenance • Page 158</span>
-      </a>
-      <a class="card" href="forms/maintenance-request-work-order.pdf" target="_blank">
-        <span class="card-emoji">📋</span>
-        <div class="card-title">Maintenance Request & Work Order</div>
-        <div class="card-desc">Combined request and work order — tracks requests, assignments, and completion</div>
-        <span class="card-tag purple">Maintenance • Page 159</span>
-      </a>
-      <a class="card" href="forms/independent-contractor-agreement.pdf" target="_blank">
-        <span class="card-emoji">🏢</span>
-        <div class="card-title">Independent Contractor Agreement</div>
-        <div class="card-desc">Hire vendors and contractors with proper documentation — defines scope and payment</div>
-        <span class="card-tag purple">Maintenance • Page 162</span>
-      </a>
-      <a class="card" href="forms/repair-completion-receipt.pdf" target="_blank">
-        <span class="card-emoji">✔️</span>
-        <div class="card-title">Repair Completion Receipt</div>
-        <div class="card-desc">Document that repairs were completed and accepted by tenant</div>
-        <span class="card-tag purple">Maintenance • Page 167</span>
-      </a>
-      <a class="card" href="forms/property-management-agreement.pdf" target="_blank">
-        <span class="card-emoji">🏢</span>
-        <div class="card-title">Property Management Agreement</div>
-        <div class="card-desc">Agreement with a property management company — scope, fees, responsibilities</div>
-        <span class="card-tag purple">Management • Page 181</span>
-      </a>
-      <a class="card" href="forms/notice-of-repair-charge.pdf" target="_blank">
-        <span class="card-emoji">💸</span>
-        <div class="card-title">Notice of Repair Charge</div>
-        <div class="card-desc">Charge tenants for repairs caused by their negligence or damage</div>
-        <span class="card-tag purple">Maintenance • Page 183</span>
-      </a>
+      <div class="form-card" data-search="notice intent to enter entry inspection required legal">
+        <span class="form-card-icon">🔔</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice of Intent to Enter</div>
+          <div class="form-card-desc">Advance notice before entering tenant's unit — legally required</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-of-intent-to-enter.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-of-intent-to-enter.pdf" download="Notice-of-Intent-to-Enter.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-of-intent-to-enter.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="full inspection report room documentation landlord records">
+        <span class="form-card-icon">🏠</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Full Inspection Report</div>
+          <div class="form-card-desc">Comprehensive room-by-room property inspection documentation</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/full-inspection-report.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/full-inspection-report.pdf" download="Full-Inspection-Report.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/full-inspection-report.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="spring summer winter seasonal maintenance checklist preventive">
+        <span class="form-card-icon">🌸</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Seasonal Maintenance Checklists</div>
+          <div class="form-card-desc">Spring / Summer / Winter preventive maintenance schedules</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/seasonal-maintenance-checklists.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/seasonal-maintenance-checklists.pdf" download="Seasonal-Maintenance-Checklists.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/seasonal-maintenance-checklists.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="maintenance request form tenant repair submit document">
+        <span class="form-card-icon">🔧</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Maintenance Request Form</div>
+          <div class="form-card-desc">Tenant-facing form to submit maintenance requests</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/maintenance-request-form.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/maintenance-request-form.pdf" download="Maintenance-Request-Form.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/maintenance-request-form.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="maintenance request work order track assignment completion repair">
+        <span class="form-card-icon">📋</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Maintenance Request & Work Order</div>
+          <div class="form-card-desc">Combined request and work order — tracks assignments and completion</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/maintenance-request-work-order.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/maintenance-request-work-order.pdf" download="Maintenance-Request-Work-Order.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/maintenance-request-work-order.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="independent contractor agreement vendor hire scope payment">
+        <span class="form-card-icon">🏢</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Independent Contractor Agreement</div>
+          <div class="form-card-desc">Hire vendors and contractors — defines scope, payment, and liability</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/independent-contractor-agreement.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/independent-contractor-agreement.pdf" download="Independent-Contractor-Agreement.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/independent-contractor-agreement.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="repair completion receipt done accepted tenant acknowledgement">
+        <span class="form-card-icon">✔️</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Repair Completion Receipt</div>
+          <div class="form-card-desc">Document repairs were completed and accepted by tenant</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/repair-completion-receipt.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/repair-completion-receipt.pdf" download="Repair-Completion-Receipt.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/repair-completion-receipt.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="property management agreement company scope fees responsibilities">
+        <span class="form-card-icon">🏢</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Property Management Agreement</div>
+          <div class="form-card-desc">Agreement with property management company — scope, fees, responsibilities</div>
+          <span class="form-card-tag purple">Management</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/property-management-agreement.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/property-management-agreement.pdf" download="Property-Management-Agreement.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/property-management-agreement.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="notice repair charge tenant damage negligence charge">
+        <span class="form-card-icon">💸</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice of Repair Charge</div>
+          <div class="form-card-desc">Charge tenants for repairs caused by their negligence or damage</div>
+          <span class="form-card-tag purple">Maintenance</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-of-repair-charge.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-of-repair-charge.pdf" download="Notice-of-Repair-Charge.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-of-repair-charge.pdf')">🖨 Print</button>
+        </div>
+      </div>
 
       <!-- RENEWAL / MOVE-OUT -->
-      <a class="card" href="forms/notice-rent-increase-change.pdf" target="_blank">
-        <span class="card-emoji">📬</span>
-        <div class="card-title">Notice of Rent Increase / Change of Terms</div>
-        <div class="card-desc">Properly notify tenants of upcoming rent changes with required advance notice</div>
-        <span class="card-tag yellow">Renewal • Page 196</span>
-      </a>
-      <a class="card" href="forms/rental-agreement-extension.pdf" target="_blank">
-        <span class="card-emoji">📄</span>
-        <div class="card-title">Rental Agreement Extension & Upgrade Offer</div>
-        <div class="card-desc">Renew the lease with new terms and offer property upgrades as incentive</div>
-        <span class="card-tag yellow">Renewal • Page 202</span>
-      </a>
-      <a class="card" href="forms/end-of-lease-notice.pdf" target="_blank">
-        <span class="card-emoji">📅</span>
-        <div class="card-title">End of Lease Notice</div>
-        <div class="card-desc">Notify tenant their lease is ending and what their options are</div>
-        <span class="card-tag yellow">Move-Out • Page 209</span>
-      </a>
-      <a class="card" href="forms/move-out-inspection-request.pdf" target="_blank">
-        <span class="card-emoji">🚪</span>
-        <div class="card-title">Right to Request Initial Move-Out Inspection</div>
-        <div class="card-desc">Tenant's right to a pre-move-out walkthrough — required in some states</div>
-        <span class="card-tag yellow">Move-Out • Page 212</span>
-      </a>
-      <a class="card" href="forms/how-to-get-full-deposit-back.pdf" target="_blank">
-        <span class="card-emoji">💵</span>
-        <div class="card-title">How to Receive Your Full Deposit Back</div>
-        <div class="card-desc">Instructions for tenants on move-out condition to get full deposit returned</div>
-        <span class="card-tag yellow">Move-Out • Page 213</span>
-      </a>
-      <a class="card" href="forms/move-out-reminder-letter.pdf" target="_blank">
-        <span class="card-emoji">📝</span>
-        <div class="card-title">Move-Out & Reminder Letter</div>
-        <div class="card-desc">Final reminder letter with move-out procedures, cleaning expectations, and key return</div>
-        <span class="card-tag yellow">Move-Out • Page 216</span>
-      </a>
-      <a class="card" href="forms/resident-exit-survey.pdf" target="_blank">
-        <span class="card-emoji">📊</span>
-        <div class="card-title">Resident Exit Survey</div>
-        <div class="card-desc">Gather feedback from departing tenants — improve your property and processes</div>
-        <span class="card-tag yellow">Move-Out • Page 218</span>
-      </a>
-      <a class="card" href="forms/itemization-security-deposit-return.pdf" target="_blank">
-        <span class="card-emoji">💰</span>
-        <div class="card-title">Itemization of Security Deposit Return</div>
-        <div class="card-desc">Itemize all deductions and document remaining deposit returned — legally required</div>
-        <span class="card-tag yellow">Move-Out • Page 219</span>
-      </a>
-      <a class="card" href="forms/vacant-units-make-ready-checklist.pdf" target="_blank">
-        <span class="card-emoji">🏠</span>
-        <div class="card-title">Vacant Units Checklist / Make-Ready</div>
-        <div class="card-desc">Complete checklist for preparing a vacant unit for the next tenant</div>
-        <span class="card-tag yellow">Move-Out • Page 220</span>
-      </a>
+      <div class="form-card" data-search="notice rent increase change terms raise amount">
+        <span class="form-card-icon">📬</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Notice of Rent Increase / Change of Terms</div>
+          <div class="form-card-desc">Notify tenants of upcoming rent changes with required advance notice</div>
+          <span class="form-card-tag yellow">Renewal</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/notice-rent-increase-change.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/notice-rent-increase-change.pdf" download="Notice-Rent-Increase-Change.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/notice-rent-increase-change.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="rental agreement extension upgrade offer renew lease new terms">
+        <span class="form-card-icon">📄</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Rental Agreement Extension & Upgrade Offer</div>
+          <div class="form-card-desc">Renew lease with updated terms — offer upgrades as retention incentive</div>
+          <span class="form-card-tag yellow">Renewal</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/rental-agreement-extension.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/rental-agreement-extension.pdf" download="Rental-Agreement-Extension.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/rental-agreement-extension.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="end of lease notice ending options vacate non-renewal">
+        <span class="form-card-icon">📅</span>
+        <div class="form-card-body">
+          <div class="form-card-title">End of Lease Notice</div>
+          <div class="form-card-desc">Notify tenant their lease is ending and what their options are</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/end-of-lease-notice.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/end-of-lease-notice.pdf" download="End-of-Lease-Notice.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/end-of-lease-notice.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="move out inspection request pre-move initial walkthrough tenant right">
+        <span class="form-card-icon">🚪</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Right to Request Move-Out Inspection</div>
+          <div class="form-card-desc">Pre-move-out walkthrough rights — required in some states</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/move-out-inspection-request.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/move-out-inspection-request.pdf" download="Move-Out-Inspection-Request.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/move-out-inspection-request.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="how to get full deposit back instructions cleaning return">
+        <span class="form-card-icon">💵</span>
+        <div class="form-card-body">
+          <div class="form-card-title">How to Receive Your Full Deposit Back</div>
+          <div class="form-card-desc">Instructions for tenants on move-out condition to get full deposit returned</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/how-to-get-full-deposit-back.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/how-to-get-full-deposit-back.pdf" download="How-to-Get-Full-Deposit-Back.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/how-to-get-full-deposit-back.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="move out reminder letter procedures cleaning keys return">
+        <span class="form-card-icon">📝</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Move-Out & Reminder Letter</div>
+          <div class="form-card-desc">Final reminder with move-out procedures, cleaning expectations, key return</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/move-out-reminder-letter.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/move-out-reminder-letter.pdf" download="Move-Out-Reminder-Letter.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/move-out-reminder-letter.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="resident exit survey feedback departing improve">
+        <span class="form-card-icon">📊</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Resident Exit Survey</div>
+          <div class="form-card-desc">Gather feedback from departing tenants — improve your property</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/resident-exit-survey.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/resident-exit-survey.pdf" download="Resident-Exit-Survey.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/resident-exit-survey.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="itemization security deposit return deductions document legal">
+        <span class="form-card-icon">💰</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Itemization of Security Deposit Return</div>
+          <div class="form-card-desc">Itemize all deductions and remaining deposit returned — legally required</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/itemization-security-deposit-return.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/itemization-security-deposit-return.pdf" download="Itemization-Security-Deposit-Return.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/itemization-security-deposit-return.pdf')">🖨 Print</button>
+        </div>
+      </div>
+
+      <div class="form-card" data-search="vacant units checklist make ready prepare next tenant turnover">
+        <span class="form-card-icon">🏠</span>
+        <div class="form-card-body">
+          <div class="form-card-title">Vacant Units / Make-Ready Checklist</div>
+          <div class="form-card-desc">Complete checklist for preparing a vacant unit for the next tenant</div>
+          <span class="form-card-tag yellow">Move-Out</span>
+        </div>
+        <div class="form-actions">
+          <a class="btn btn-view" href="forms/vacant-units-make-ready-checklist.pdf" target="_blank">👁 View</a>
+          <a class="btn btn-download" href="forms/vacant-units-make-ready-checklist.pdf" download="Vacant-Units-Make-Ready-Checklist.pdf">⬇ Download</a>
+          <button class="btn btn-print" onclick="printForm('forms/vacant-units-make-ready-checklist.pdf')">🖨 Print</button>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -516,95 +1068,196 @@
     <div class="section-header">
       <span class="section-icon">🎙️</span>
       <div>
-        <div class="section-title">VIP Landlord Interview Transcripts</div>
-        <div class="section-desc">Real investor strategies from MrLandlord.com — click to read full transcript</div>
+        <div class="section-title">VIP Landlord Audio Interviews</div>
+        <div class="section-desc">Listen directly in your browser • Download MP3 • Read full transcript</div>
       </div>
     </div>
-    <a class="audio-item" href="transcripts/enlarge_vision_2.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Enlarge Your Vision — Part 2</div>
-        <div class="audio-desc">Buy & hold vs. flipping, the "Carl" negotiation story, creative seller financing, motivated seller tactics</div>
-        <span class="audio-tag">Full Transcript</span>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Enlarge Your Vision — Part 2</div>
+          <div class="audio-desc">Buy & hold vs. flipping, the "Carl" negotiation story, creative seller financing, motivated seller tactics</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/enlarge_vision_6.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Enlarge Your Vision — Part 6</div>
-        <div class="audio-desc">Flooring upgrades, website advertising, texting tenants for late rent, proactive landlord mindset</div>
-        <span class="audio-tag">Full Transcript</span>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/enlarge-vision-2.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/enlarge-vision-2.mp3" download="Enlarge-Your-Vision-Part-2.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/enlarge_vision_2.txt" target="_blank">📄 Full Transcript</a>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/low_income_5.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Investing in Low Income — Part 5</div>
-        <div class="audio-desc">Section 8 strategy, building relationships with inspectors, getting the inspection checklist, FL utility records</div>
-        <span class="audio-tag">Full Transcript</span>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Enlarge Your Vision — Part 6</div>
+          <div class="audio-desc">Flooring upgrades, website advertising, texting tenants for late rent, proactive landlord mindset</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/low_income_6.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Investing in Low Income — Part 6</div>
-        <div class="audio-desc">Perpetual student mindset, MrLandlord.com as daily resource, one step at a time, vision for giving back</div>
-        <span class="audio-tag">Full Transcript</span>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/enlarge-vision-6.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/enlarge-vision-6.mp3" download="Enlarge-Your-Vision-Part-6.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/enlarge_vision_6.txt" target="_blank">📄 Full Transcript</a>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_1.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 1 (David Doyle, 42 Years Experience)</div>
-        <div class="audio-desc">Getting started with duplexes, seller financing, writing offers on the spot, why duplexes beat single families</div>
-        <span class="audio-tag">Full Transcript</span>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Investing in Low Income — Part 5</div>
+          <div class="audio-desc">Section 8 strategy, building inspector relationships, FL utility records, inspection checklist tips</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_2.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 2</div>
-        <div class="audio-desc">Discounted rent program, deposit-only bank accounts, ka-ching rent alerts, screening through rent structure</div>
-        <span class="audio-tag">Full Transcript</span>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/low-income-5.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/low-income-5.mp3" download="Investing-in-Low-Income-Part-5.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/low_income_5.txt" target="_blank">📄 Full Transcript</a>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_3.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 3</div>
-        <div class="audio-desc">What to do differently (start sooner, more leverage), biggest achievements, handling the first eviction</div>
-        <span class="audio-tag">Full Transcript</span>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Investing in Low Income — Part 6</div>
+          <div class="audio-desc">Perpetual student mindset, MrLandlord.com as daily resource, vision for giving back to community</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_4.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 4</div>
-        <div class="audio-desc">Signs as best advertising, FL public records for tenant screening, utility company relationships, code enforcement</div>
-        <span class="audio-tag">Full Transcript</span>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/low-income-6.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/low-income-6.mp3" download="Investing-in-Low-Income-Part-6.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/low_income_6.txt" target="_blank">📄 Full Transcript</a>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_5.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 5</div>
-        <div class="audio-desc">Lease clauses for code violations, citing residents vs. owners, landlord groups, inviting judges to speak</div>
-        <span class="audio-tag">Full Transcript</span>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 1 (David Doyle, 42 Years)</div>
+          <div class="audio-desc">Getting started with duplexes, seller financing, writing offers on the spot, why duplexes beat single families</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
       </div>
-    </a>
-    <a class="audio-item" href="transcripts/quality_6.txt" target="_blank">
-      <span class="audio-icon">🎙️</span>
-      <div>
-        <div class="audio-title">Quality Over Quantity — Part 6</div>
-        <div class="audio-desc">Exit strategy, selling to younger investors with owner financing, property management companies, infinite ROI</div>
-        <span class="audio-tag">Full Transcript</span>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-1.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-1.mp3" download="Quality-Over-Quantity-Part-1.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_1.txt" target="_blank">📄 Full Transcript</a>
       </div>
-    </a>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 2</div>
+          <div class="audio-desc">Discounted rent program, deposit-only bank accounts, ka-ching rent alerts, screening through rent structure</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
+      </div>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-2.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-2.mp3" download="Quality-Over-Quantity-Part-2.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_2.txt" target="_blank">📄 Full Transcript</a>
+      </div>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 3</div>
+          <div class="audio-desc">What to do differently (start sooner, use leverage), biggest achievements, handling the first eviction</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
+      </div>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-3.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-3.mp3" download="Quality-Over-Quantity-Part-3.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_3.txt" target="_blank">📄 Full Transcript</a>
+      </div>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 4</div>
+          <div class="audio-desc">Signs as best advertising, FL public records for screening, utility company relationships, code enforcement</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
+      </div>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-4.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-4.mp3" download="Quality-Over-Quantity-Part-4.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_4.txt" target="_blank">📄 Full Transcript</a>
+      </div>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 5</div>
+          <div class="audio-desc">Lease clauses for code violations, citing residents vs. owners, landlord groups, inviting judges to speak</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
+      </div>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-5.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-5.mp3" download="Quality-Over-Quantity-Part-5.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_5.txt" target="_blank">📄 Full Transcript</a>
+      </div>
+    </div>
+
+    <div class="audio-card">
+      <div class="audio-header">
+        <span class="audio-icon">🎙️</span>
+        <div>
+          <div class="audio-title">Quality Over Quantity — Part 6</div>
+          <div class="audio-desc">Exit strategy, selling to younger investors with owner financing, property management, infinite ROI philosophy</div>
+          <span class="audio-tag">MrLandlord.com VIP Interview</span>
+        </div>
+      </div>
+      <audio class="audio-player" controls preload="none">
+        <source src="audio/quality-6.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-actions">
+        <a class="btn btn-audio-dl" href="audio/quality-6.mp3" download="Quality-Over-Quantity-Part-6.mp3">⬇ Download MP3</a>
+        <a class="btn btn-transcript" href="transcripts/quality_6.txt" target="_blank">📄 Full Transcript</a>
+      </div>
+    </div>
+
   </div>
 
   <div class="ask-bar">
     <h3>💬 Ask Kai Anything</h3>
-    <p>Head to <strong>#ai-property-manager</strong> in the Discord server and ask any question. Kai will pull the exact answer from these resources and explain it clearly.</p>
+    <p>Head to <strong>#ai-property-manager</strong> in Discord and ask any question. Kai pulls answers directly from these resources and explains clearly.</p>
   </div>
 
 </div>
@@ -614,20 +1267,27 @@
 </footer>
 
 <script>
-  // Count forms
-  const allCards = document.querySelectorAll('#formsGrid .card');
-  document.getElementById('formCount').textContent = allCards.length + ' forms';
+  const allForms = document.querySelectorAll('#formsGrid .form-card');
+  document.getElementById('formCount').textContent = allForms.length + ' forms';
 
   function filterForms() {
     const q = document.getElementById('formSearch').value.toLowerCase().trim();
     let visible = 0;
-    allCards.forEach(card => {
-      const match = !q || card.innerText.toLowerCase().includes(q);
-      card.classList.toggle('hidden', !match);
+    allForms.forEach(card => {
+      const text = (card.dataset.search + ' ' + card.innerText).toLowerCase();
+      const match = !q || text.includes(q);
+      card.style.display = match ? '' : 'none';
       if (match) visible++;
     });
     document.getElementById('noResults').style.display = (q && visible === 0) ? 'block' : 'none';
-    document.getElementById('formCount').textContent = (q ? visible + ' matching' : allCards.length) + ' forms';
+    document.getElementById('formCount').textContent = (q ? visible + ' matching' : allForms.length) + ' forms';
+  }
+
+  function printForm(url) {
+    const win = window.open(url, '_blank');
+    win.addEventListener('load', () => {
+      setTimeout(() => { win.print(); }, 500);
+    });
   }
 </script>
 
