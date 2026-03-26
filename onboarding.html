@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilson Ortiz Deals — Member Onboarding</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0f0f; color: #e0e0e0; min-height: 100vh; }
+
+  header { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); padding: 40px 24px 28px; text-align: center; border-bottom: 1px solid #2a2a4a; }
+  header h1 { font-size: 1.9rem; font-weight: 700; color: #fff; }
+  header p { color: #a0a8c0; margin-top: 8px; font-size: 0.95rem; }
+
+  .container { max-width: 680px; margin: 0 auto; padding: 32px 24px 60px; }
+
+  .section { background: #1a1a2a; border: 1px solid #2a2a3a; border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+  .section-title { font-size: 1.05rem; font-weight: 700; color: #d0d8ff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title span { font-size: 1.2rem; }
+
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 0.85rem; color: #9090b0; margin-bottom: 6px; font-weight: 500; }
+  .field label .req { color: #e94560; margin-left: 3px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="number"],
+  .field input[type="url"],
+  .field textarea,
+  .field select {
+    width: 100%; background: #0f0f1a; border: 1px solid #2a2a4a; border-radius: 8px;
+    padding: 11px 14px; color: #e0e0e0; font-size: 0.9rem; outline: none;
+    transition: border-color 0.2s; font-family: inherit;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: #4a4a9a; }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field select option { background: #1a1a2a; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 4px; }
+  .role-card { border: 2px solid #2a2a3a; border-radius: 10px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+  .role-card:hover { border-color: #4a4a7a; background: #22223a; }
+  .role-card.selected { border-color: #6060d0; background: #1a1a3a; }
+  .role-card input[type="radio"] { display: none; }
+  .role-card-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+  .role-card-title { font-size: 0.9rem; font-weight: 700; color: #d0d8ff; }
+  .role-card-desc { font-size: 0.75rem; color: #6a7090; margin-top: 4px; }
+
+  .hidden { display: none !important; }
+
+  .divider { border: none; border-top: 1px solid #2a2a3a; margin: 20px 0; }
+
+  .sub-section { background: #131320; border: 1px solid #222238; border-radius: 8px; padding: 18px; margin-top: 16px; }
+  .sub-section-title { font-size: 0.85rem; font-weight: 700; color: #8080c0; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .toggle-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .toggle-label { font-size: 0.88rem; color: #9090b0; }
+  .toggle { position: relative; width: 42px; height: 22px; }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider { position: absolute; inset: 0; background: #2a2a4a; border-radius: 22px; cursor: pointer; transition: 0.3s; }
+  .toggle-slider:before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+  .toggle input:checked + .toggle-slider { background: #6060d0; }
+  .toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+  .radio-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .radio-pill { display: flex; align-items: center; gap: 6px; }
+  .radio-pill input { accent-color: #6060d0; }
+  .radio-pill label { font-size: 0.85rem; color: #a0a8c0; cursor: pointer; }
+
+  .btn-submit { width: 100%; background: linear-gradient(135deg, #4040c0, #6060e0); color: #fff; border: none; border-radius: 10px; padding: 16px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+  .btn-submit:hover { background: linear-gradient(135deg, #5050d0, #7070f0); transform: translateY(-1px); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .note { font-size: 0.78rem; color: #5a5a7a; margin-top: 6px; }
+
+  .success-screen { display: none; text-align: center; padding: 60px 24px; }
+  .success-screen .icon { font-size: 4rem; margin-bottom: 16px; }
+  .success-screen h2 { font-size: 1.5rem; color: #80d080; margin-bottom: 12px; }
+  .success-screen p { color: #a0a8c0; line-height: 1.6; }
+
+  .error-msg { color: #e94560; font-size: 0.8rem; margin-top: 4px; display: none; }
+  input.invalid, textarea.invalid { border-color: #e94560; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏠 Wilson Ortiz Deals</h1>
+  <p>Complete your member profile to access the community</p>
+</header>
+
+<div class="container" id="formContainer">
+
+  <!-- STEP 1: BASIC INFO -->
+  <div class="section">
+    <div class="section-title"><span>👤</span> Your Information</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>First Name <span class="req">*</span></label>
+        <input type="text" id="firstName" placeholder="First name">
+        <div class="error-msg" id="err-firstName">Required</div>
+      </div>
+      <div class="field">
+        <label>Last Name <span class="req">*</span></label>
+        <input type="text" id="lastName" placeholder="Last name">
+        <div class="error-msg" id="err-lastName">Required</div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="(555) 555-5555">
+        <div class="error-msg" id="err-phone">Required</div>
+      </div>
+      <div class="field">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="you@email.com">
+        <div class="error-msg" id="err-email">Required</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Discord Username</label>
+      <input type="text" id="discordUser" placeholder="yourname#0000 or @yourname">
+    </div>
+  </div>
+
+  <!-- STEP 2: ROLE SELECTION -->
+  <div class="section">
+    <div class="section-title"><span>🏷️</span> What best describes you?</div>
+    <div class="role-grid">
+      <label class="role-card" onclick="selectRole('agent')">
+        <input type="radio" name="role" value="agent">
+        <span class="role-card-icon">🏢</span>
+        <div class="role-card-title">Real Estate Agent</div>
+        <div class="role-card-desc">Licensed agent with brokerage</div>
+      </label>
+      <label class="role-card" onclick="selectRole('investor')">
+        <input type="radio" name="role" value="investor">
+        <span class="role-card-icon">💼</span>
+        <div class="role-card-title">Investor</div>
+        <div class="role-card-desc">Buying investment properties</div>
+      </label>
+      <label class="role-card" onclick="selectRole('wholesaler')">
+        <input type="radio" name="role" value="wholesaler">
+        <span class="role-card-icon">🔄</span>
+        <div class="role-card-title">Wholesaler</div>
+        <div class="role-card-desc">Sourcing & assigning deals</div>
+      </label>
+      <label class="role-card" onclick="selectRole('other')">
+        <input type="radio" name="role" value="other">
+        <span class="role-card-icon">✨</span>
+        <div class="role-card-title">Something Else</div>
+        <div class="role-card-desc">Tell us about yourself</div>
+      </label>
+    </div>
+    <div class="error-msg" id="err-role" style="display:none;margin-top:8px;">Please select a role</div>
+
+    <!-- Other description -->
+    <div class="field hidden" id="otherField" style="margin-top:14px;">
+      <label>How would you describe yourself?</label>
+      <input type="text" id="otherDesc" placeholder="e.g. Property manager, lender, contractor...">
+    </div>
+  </div>
+
+  <!-- AGENT SECTION -->
+  <div class="section hidden" id="agentSection">
+    <div class="section-title"><span>🏢</span> Agent Details</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Brokerage Name</label>
+        <input type="text" id="brokerage" placeholder="e.g. Keller Williams, RE/MAX">
+      </div>
+      <div class="field">
+        <label>Location / Market You Service</label>
+        <input type="text" id="agentMarket" placeholder="e.g. Orlando, Tampa, All of FL">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Current Buyers -->
+    <div class="toggle-row">
+      <label class="toggle">
+        <input type="checkbox" id="hasBuyers" onchange="toggleSection('buyersSection', this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label">I have current buyers</span>
+    </div>
+
+    <div class="sub-section hidden" id="buyersSection">
+      <div class="sub-section-title">Buyer Criteria</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Budget Min ($)</label>
+          <input type="number" id="agentBuyerMin" placeholder="50000">
+        </div>
+        <div class="field">
+          <label>Budget Max ($)</label>
+          <input type="number" id="agentBuyerMax" placeholder="275000">
+        </div>
+      </div>
+      <div class="field-row-3">
+        <div class="field">
+          <label>Bedrooms</label>
+          <input type="text" id="agentBuyerBeds" placeholder="e.g. 3+">
+        </div>
+        <div class="field">
+          <label>Full Bathrooms</label>
+          <input type="text" id="agentBuyerBaths" placeholder="e.g. 2+">
+        </div>
+        <div class="field">
+          <label>Half Bathrooms</label>
+          <input type="text" id="agentBuyerHalfBaths" placeholder="e.g. 1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Min Sq Footage</label>
+          <input type="number" id="agentBuyerSqft" placeholder="1200">
+        </div>
+        <div class="field">
+          <label>Acreage (if needed)</label>
+          <input type="text" id="agentBuyerAcres" placeholder="e.g. 0.5+">
+        </div>
+      </div>
+      <div class="field">
+        <label>HOA Preference</label>
+        <div class="radio-group">
+          <div class="radio-pill"><input type="radio" name="agentHoa" id="agentHoaNo" value="No HOA"><label for="agentHoaNo">No HOA</label></div>
+          <div class="radio-pill"><input type="radio" name="agentHoa" id="agentHoaYes" value="HOA OK"><label for="agentHoaYes">HOA OK</label></div>
+          <div class="radio-pill"><input type="radio" name="agentHoa" id="agentHoaMax" value="HOA with max budget"><label for="agentHoaMax">HOA with budget</label></div>
+        </div>
+      </div>
+      <div class="field hidden" id="agentHoaBudgetField">
+        <label>HOA Budget ($/month)</label>
+        <input type="number" id="agentHoaBudget" placeholder="e.g. 300">
+      </div>
+      <div class="field">
+        <label>Additional Buyer Requirements</label>
+        <textarea id="agentBuyerNotes" placeholder="Any other specific requirements your buyers have..."></textarea>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Current Listings -->
+    <div class="toggle-row">
+      <label class="toggle">
+        <input type="checkbox" id="hasListings" onchange="toggleSection('listingsSection', this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label">I have current listings</span>
+    </div>
+
+    <div class="sub-section hidden" id="listingsSection">
+      <div class="sub-section-title">Your Listing(s)</div>
+      <div id="listingsContainer">
+        <div class="listing-entry">
+          <div class="field">
+            <label>Property Address</label>
+            <input type="text" class="listing-addr" placeholder="123 Main St, Orlando, FL 32801">
+          </div>
+          <div class="field">
+            <label>MLS / Property Link</label>
+            <input type="url" class="listing-url" placeholder="https://...">
+          </div>
+        </div>
+      </div>
+      <button type="button" onclick="addListing()" style="margin-top:8px;background:#2a2a4a;border:none;color:#8080c0;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:0.82rem;">+ Add Another Listing</button>
+    </div>
+  </div>
+
+  <!-- INVESTOR SECTION -->
+  <div class="section hidden" id="investorSection">
+    <div class="section-title"><span>💼</span> Your Buy Box</div>
+    <p style="font-size:0.83rem;color:#6a7090;margin-bottom:20px;">Tell us exactly what you're looking for so we can match you with the right deals.</p>
+
+    <div class="field">
+      <label>Target Markets / Counties</label>
+      <input type="text" id="invMarket" placeholder="e.g. Orange, Polk, Hillsborough, All of FL">
+    </div>
+
+    <div class="field">
+      <label>Property Types</label>
+      <input type="text" id="invPropType" placeholder="e.g. Single Family, Multi-Family, Land, Commercial">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Budget Min ($)</label>
+        <input type="number" id="invBudgetMin" placeholder="10000">
+      </div>
+      <div class="field">
+        <label>Budget Max ($)</label>
+        <input type="number" id="invBudgetMax" placeholder="275000">
+      </div>
+    </div>
+
+    <div class="field-row-3">
+      <div class="field">
+        <label>Min Bedrooms</label>
+        <input type="text" id="invBeds" placeholder="e.g. 3">
+      </div>
+      <div class="field">
+        <label>Min Full Baths</label>
+        <input type="text" id="invBaths" placeholder="e.g. 2">
+      </div>
+      <div class="field">
+        <label>Half Baths</label>
+        <input type="text" id="invHalfBaths" placeholder="e.g. 1">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Min Sq Footage</label>
+        <input type="number" id="invSqft" placeholder="1000">
+      </div>
+      <div class="field">
+        <label>Acreage Needed</label>
+        <input type="text" id="invAcres" placeholder="e.g. 0.25+ or N/A">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>HOA Preference</label>
+      <div class="radio-group">
+        <div class="radio-pill"><input type="radio" name="invHoa" id="invHoaNo" value="No HOA"><label for="invHoaNo">No HOA</label></div>
+        <div class="radio-pill"><input type="radio" name="invHoa" id="invHoaYes" value="HOA OK"><label for="invHoaYes">HOA OK</label></div>
+        <div class="radio-pill"><input type="radio" name="invHoa" id="invHoaMax" value="HOA with budget"><label for="invHoaMax">HOA with budget</label></div>
+      </div>
+    </div>
+    <div class="field hidden" id="invHoaBudgetField">
+      <label>HOA Budget ($/month)</label>
+      <input type="number" id="invHoaBudget" placeholder="e.g. 200">
+    </div>
+
+    <div class="field">
+      <label>Investment Strategy</label>
+      <div class="radio-group">
+        <div class="radio-pill"><input type="radio" name="invStrategy" id="stratBH" value="Buy & Hold"><label for="stratBH">Buy &amp; Hold</label></div>
+        <div class="radio-pill"><input type="radio" name="invStrategy" id="stratFlip" value="Fix & Flip"><label for="stratFlip">Fix &amp; Flip</label></div>
+        <div class="radio-pill"><input type="radio" name="invStrategy" id="stratStr" value="Short-Term Rental"><label for="stratStr">Short-Term Rental</label></div>
+        <div class="radio-pill"><input type="radio" name="invStrategy" id="stratDev" value="Development"><label for="stratDev">Development</label></div>
+        <div class="radio-pill"><input type="radio" name="invStrategy" id="stratMulti" value="Multiple"><label for="stratMulti">Multiple</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Additional Buy Box Notes</label>
+      <textarea id="invNotes" placeholder="Any other specific criteria, deal terms, or preferences..."></textarea>
+    </div>
+  </div>
+
+  <!-- WHOLESALER SECTION -->
+  <div class="section hidden" id="wholesalerSection">
+    <div class="section-title"><span>🔄</span> Wholesaler Details</div>
+
+    <div class="field">
+      <label>Areas You Service</label>
+      <input type="text" id="whlArea" placeholder="e.g. Central FL, South FL, Statewide">
+    </div>
+
+    <div class="toggle-row" style="margin-top:4px;">
+      <label class="toggle">
+        <input type="checkbox" id="hasDeals" onchange="toggleSection('dealsSection', this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label">I have current deals available</span>
+    </div>
+
+    <div class="sub-section hidden" id="dealsSection">
+      <div class="sub-section-title">Current Deal(s)</div>
+      <div id="dealsContainer">
+        <div class="deal-entry" style="margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #2a2a3a;">
+          <div class="field">
+            <label>Property Address</label>
+            <input type="text" class="deal-addr" placeholder="123 Main St, Orlando, FL 32801">
+          </div>
+          <div class="field-row-3">
+            <div class="field"><label>Beds</label><input type="text" class="deal-beds" placeholder="3"></div>
+            <div class="field"><label>Full Baths</label><input type="text" class="deal-baths" placeholder="2"></div>
+            <div class="field"><label>Half Baths</label><input type="text" class="deal-halfbaths" placeholder="1"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Sq Footage</label><input type="number" class="deal-sqft" placeholder="1200"></div>
+            <div class="field"><label>Acreage</label><input type="text" class="deal-acres" placeholder="0.25"></div>
+          </div>
+          <div class="field">
+            <label>Asking Price ($)</label>
+            <input type="number" class="deal-price" placeholder="150000">
+          </div>
+          <div class="field">
+            <label>Photos / Property Link</label>
+            <input type="url" class="deal-url" placeholder="https://...">
+          </div>
+          <div class="field">
+            <label>Additional Info</label>
+            <textarea class="deal-notes" placeholder="ARV, rehab estimate, deal terms, motivation..."></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="button" onclick="addDeal()" style="background:#2a2a4a;border:none;color:#8080c0;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:0.82rem;">+ Add Another Deal</button>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <button class="btn-submit" onclick="submitForm()" id="submitBtn">
+    ✅ Submit &amp; Join the Community
+  </button>
+  <p class="note" style="text-align:center;margin-top:12px;">Your information is private and will only be seen by Wilson Ortiz and his team.</p>
+
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="success-screen" id="successScreen">
+  <div class="icon">🎉</div>
+  <h2>Welcome to Wilson Ortiz Deals!</h2>
+  <p>Your profile has been submitted. You'll be granted access to all channels shortly.<br><br>Head back to Discord — your profile is being reviewed and access will be granted automatically.</p>
+</div>
+
+<script>
+// ── ROLE SELECTION ──────────────────────────────────────────────────────────
+let selectedRole = '';
+function selectRole(role) {
+  selectedRole = role;
+  document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.role-card input[type="radio"]').forEach(r => {
+    if (r.value === role) {
+      r.checked = true;
+      r.closest('.role-card').classList.add('selected');
+    }
+  });
+  // Show/hide sections
+  ['agentSection','investorSection','wholesalerSection','otherField'].forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  if (role === 'agent') document.getElementById('agentSection').classList.remove('hidden');
+  if (role === 'investor') document.getElementById('investorSection').classList.remove('hidden');
+  if (role === 'wholesaler') document.getElementById('wholesalerSection').classList.remove('hidden');
+  if (role === 'other') document.getElementById('otherField').classList.remove('hidden');
+  document.getElementById('err-role').style.display = 'none';
+}
+
+// ── TOGGLE SECTIONS ─────────────────────────────────────────────────────────
+function toggleSection(id, show) {
+  document.getElementById(id).classList.toggle('hidden', !show);
+}
+
+// ── HOA BUDGET TOGGLES ───────────────────────────────────────────────────────
+document.querySelectorAll('input[name="agentHoa"]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.getElementById('agentHoaBudgetField').classList.toggle('hidden', r.value !== 'HOA with budget');
+  });
+});
+document.querySelectorAll('input[name="invHoa"]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.getElementById('invHoaBudgetField').classList.toggle('hidden', r.value !== 'HOA with budget');
+  });
+});
+
+// ── ADD LISTING ──────────────────────────────────────────────────────────────
+function addListing() {
+  const c = document.getElementById('listingsContainer');
+  const div = document.createElement('div');
+  div.className = 'listing-entry';
+  div.style.marginTop = '14px';
+  div.innerHTML = `
+    <div class="field"><label>Property Address</label><input type="text" class="listing-addr" placeholder="123 Main St, Orlando, FL"></div>
+    <div class="field"><label>MLS / Property Link</label><input type="url" class="listing-url" placeholder="https://..."></div>`;
+  c.appendChild(div);
+}
+
+// ── ADD DEAL ─────────────────────────────────────────────────────────────────
+function addDeal() {
+  const c = document.getElementById('dealsContainer');
+  const div = document.createElement('div');
+  div.className = 'deal-entry';
+  div.style.cssText = 'margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #2a2a3a;margin-top:14px;';
+  div.innerHTML = `
+    <div class="field"><label>Property Address</label><input type="text" class="deal-addr" placeholder="123 Main St, Orlando, FL"></div>
+    <div class="field-row-3">
+      <div class="field"><label>Beds</label><input type="text" class="deal-beds" placeholder="3"></div>
+      <div class="field"><label>Full Baths</label><input type="text" class="deal-baths" placeholder="2"></div>
+      <div class="field"><label>Half Baths</label><input type="text" class="deal-halfbaths" placeholder="1"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Sq Footage</label><input type="number" class="deal-sqft" placeholder="1200"></div>
+      <div class="field"><label>Acreage</label><input type="text" class="deal-acres" placeholder="0.25"></div>
+    </div>
+    <div class="field"><label>Asking Price ($)</label><input type="number" class="deal-price" placeholder="150000"></div>
+    <div class="field"><label>Photos / Property Link</label><input type="url" class="deal-url" placeholder="https://..."></div>
+    <div class="field"><label>Additional Info</label><textarea class="deal-notes" placeholder="ARV, rehab estimate, deal terms..."></textarea></div>`;
+  c.appendChild(div);
+}
+
+// ── VALIDATION ───────────────────────────────────────────────────────────────
+function validateRequired() {
+  let valid = true;
+  const required = [
+    {id: 'firstName', err: 'err-firstName'},
+    {id: 'lastName',  err: 'err-lastName'},
+    {id: 'phone',     err: 'err-phone'},
+    {id: 'email',     err: 'err-email'},
+  ];
+  required.forEach(f => {
+    const el = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    if (!el.value.trim()) {
+      el.classList.add('invalid');
+      err.style.display = 'block';
+      valid = false;
+    } else {
+      el.classList.remove('invalid');
+      err.style.display = 'none';
+    }
+  });
+  if (!selectedRole) {
+    document.getElementById('err-role').style.display = 'block';
+    valid = false;
+  }
+  return valid;
+}
+
+// ── COLLECT DATA ─────────────────────────────────────────────────────────────
+function collectFormData() {
+  const data = {
+    firstName:    document.getElementById('firstName').value.trim(),
+    lastName:     document.getElementById('lastName').value.trim(),
+    phone:        document.getElementById('phone').value.trim(),
+    email:        document.getElementById('email').value.trim(),
+    discordUser:  document.getElementById('discordUser').value.trim(),
+    role:         selectedRole,
+    submittedAt:  new Date().toISOString(),
+  };
+
+  if (selectedRole === 'other') {
+    data.otherDesc = document.getElementById('otherDesc').value.trim();
+  }
+
+  if (selectedRole === 'agent') {
+    data.agent = {
+      brokerage:    document.getElementById('brokerage').value.trim(),
+      market:       document.getElementById('agentMarket').value.trim(),
+      hasBuyers:    document.getElementById('hasBuyers').checked,
+      hasListings:  document.getElementById('hasListings').checked,
+    };
+    if (data.agent.hasBuyers) {
+      data.agent.buyers = {
+        budgetMin:  document.getElementById('agentBuyerMin').value,
+        budgetMax:  document.getElementById('agentBuyerMax').value,
+        beds:       document.getElementById('agentBuyerBeds').value,
+        baths:      document.getElementById('agentBuyerBaths').value,
+        halfBaths:  document.getElementById('agentBuyerHalfBaths').value,
+        sqft:       document.getElementById('agentBuyerSqft').value,
+        acres:      document.getElementById('agentBuyerAcres').value,
+        hoa:        document.querySelector('input[name="agentHoa"]:checked')?.value || '',
+        hoaBudget:  document.getElementById('agentHoaBudget').value,
+        notes:      document.getElementById('agentBuyerNotes').value.trim(),
+      };
+    }
+    if (data.agent.hasListings) {
+      data.agent.listings = [...document.querySelectorAll('.listing-entry')].map(e => ({
+        address: e.querySelector('.listing-addr')?.value.trim(),
+        url:     e.querySelector('.listing-url')?.value.trim(),
+      })).filter(l => l.address);
+    }
+  }
+
+  if (selectedRole === 'investor') {
+    data.investor = {
+      market:     document.getElementById('invMarket').value.trim(),
+      propType:   document.getElementById('invPropType').value.trim(),
+      budgetMin:  document.getElementById('invBudgetMin').value,
+      budgetMax:  document.getElementById('invBudgetMax').value,
+      beds:       document.getElementById('invBeds').value,
+      baths:      document.getElementById('invBaths').value,
+      halfBaths:  document.getElementById('invHalfBaths').value,
+      sqft:       document.getElementById('invSqft').value,
+      acres:      document.getElementById('invAcres').value,
+      hoa:        document.querySelector('input[name="invHoa"]:checked')?.value || '',
+      hoaBudget:  document.getElementById('invHoaBudget').value,
+      strategy:   document.querySelector('input[name="invStrategy"]:checked')?.value || '',
+      notes:      document.getElementById('invNotes').value.trim(),
+    };
+  }
+
+  if (selectedRole === 'wholesaler') {
+    data.wholesaler = {
+      area:      document.getElementById('whlArea').value.trim(),
+      hasDeals:  document.getElementById('hasDeals').checked,
+    };
+    if (data.wholesaler.hasDeals) {
+      data.wholesaler.deals = [...document.querySelectorAll('.deal-entry')].map(e => ({
+        address:  e.querySelector('.deal-addr')?.value.trim(),
+        beds:     e.querySelector('.deal-beds')?.value,
+        baths:    e.querySelector('.deal-baths')?.value,
+        halfBaths:e.querySelector('.deal-halfbaths')?.value,
+        sqft:     e.querySelector('.deal-sqft')?.value,
+        acres:    e.querySelector('.deal-acres')?.value,
+        price:    e.querySelector('.deal-price')?.value,
+        url:      e.querySelector('.deal-url')?.value.trim(),
+        notes:    e.querySelector('.deal-notes')?.value.trim(),
+      })).filter(d => d.address);
+    }
+  }
+
+  return data;
+}
+
+// ── SUBMIT ───────────────────────────────────────────────────────────────────
+async function submitForm() {
+  if (!validateRequired()) {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = collectFormData();
+
+  try {
+    // Post to GitHub Pages data endpoint (we'll use a form service)
+    const resp = await fetch('https://formspree.io/f/xvgzjkno', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(data),
+    });
+
+    if (resp.ok) {
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (e) {
+    // Fallback: encode in URL and redirect with data
+    const encoded = encodeURIComponent(JSON.stringify(data));
+    window.location.href = `https://wilsonortizrealtor-arch.github.io/kai-resources/submitted.html?data=${encoded.substring(0,2000)}`;
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+  }
+
+  btn.disabled = false;
+}
+</script>
+</body>
+</html>
